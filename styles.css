@@ -1,0 +1,70 @@
+html {
+    scroll-behavior:smooth;
+}
+h1 {
+    font-family: Helvetica, sans-serif;
+    color: lightpink;
+    font-size: 70px;
+    text-align: center;
+    padding-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap: break-word;
+    }
+h2 {
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 35px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+p {
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 30px;
+    word-wrap: normal;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+p.writeup{
+    width:80%;
+    text-align: left;
+    padding-bottom: 5px;
+}
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    max-width: 35%;
+    min-width: 300px;
+    max-height: 35%;
+    min-height: 300px;
+}
+.nav, a:link, a:visited {
+    text-decoration: none;
+    padding-top: 0px;
+    list-style-type: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color: black;
+}
+a:hover {
+    color: lightpink;
+    text-decoration: none;
+}
+.nav li {
+    display: inline-block;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.portrait{
+    display: flex;
+}
