@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <script src="scripts/tmpBoxTippingApproximator.js"></script>
+        </head>
+    <body>
+        <p>Select product:</p>
+        <select id="productSelect">
+            <option value="costco650">Costco 650g</option>
+            <option value=aldi500>Aldi 500g</option>
+            <option value=aldi200>Aldi 200g</option>
+            <option value=ww375>WW 375g</option>
+            <option value=ww200>WW 200g</option>
+            <option value=tmp500>TMP 500g</option>
+            <option value=tmp200>TMP 200g</option>
+            <br>
+        </select>
+
+        <p> Input amount of trays needed for the order: </p>
+        <input type="text" id="traysRequired" name="traysRequired" value=""></input>
+        <p></p>
+        <button type="button" onclick="runScript()">Calculate</button>
+
+        <p id="output"></p>
+
+    </body>
+</html>
