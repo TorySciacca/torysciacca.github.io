@@ -35,6 +35,10 @@ p.writeup{
     text-align: left;
     padding-bottom: 5px;
 }
+p.mushroom{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 img {
     display: block;
     margin-left: auto;
@@ -67,4 +71,11 @@ a:hover {
 }
 .portrait{
     display: flex;
+}
+input{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    max-width: 20%;
 }
