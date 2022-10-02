@@ -14,11 +14,11 @@
               <li><a href="about.html"><p>About</p></a></li>
             </div>
 
-        <h2 style="padding-bottom: 10px;">Mushroom Tipping Approximator</h2>
+        <h2 style="padding: 10px;">Mushroom Tipping Approximator</h2>
 
         <p class="writeup">A simple program that roughly estimates how many 3kg boxes of mushrooms are needed for various slicing products.</p>
       
-        <div style="border:2px solid; border-radius: 8px; padding: 10px;margin:auto;width:80%;">
+        <div style="border:1px solid; border-radius: 8px; padding: 10px;margin:auto;width:80%;">
             <div class="nav">
                 <p class="mushroom">Select product:</p>
                 <select id="productSelect">
@@ -35,7 +35,7 @@
 
             <div class="nav">
                 <p class="mushroom">Input amount of trays needed: </p>
-                <input type="text" id="traysRequired" name="traysRequired" value=""></input>
+                <input type="number" id="traysRequired" name="traysRequired" value=""></input>
                 <button style="height: 10%" type="button" onclick="runScript()">Calculate</button>
 
                 <p class="mushroom" id="output"></p>
