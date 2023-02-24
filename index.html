@@ -1,19 +1,38 @@
 <!DOCTYPE html>
-  <html>
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="styles.css">
-      <link rel="icon" href="favicon.jpeg"></link>
-    </head>
-    <body>
-      <h1>TORYSCIACCA.COM</h1>
-      <div class="nav">
-        <li><a href="index.html" style="color: lightpink"><p>Home</p></a></li>  
-        <li><a href="about.html"><p>About</p></a></li>
-      </div>
+<html>
+<head>
+	<title>Tory Sciacca</title>
+	<style>
+		body {
+			background-color: black;
+			color: white;
+            font-family: Arial, Helvetica, sans-serif;
+			font-size: 2em;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="text"></div>
+	<script>
+		function displayTextOneCharAtATime(text, delay) {
+			let index = 0;
+			const interval = setInterval(() => {
+				if (index === text.length) {
+					clearInterval(interval);
+				} else {
+					document.getElementById("text").innerHTML += text.charAt(index);
+					index++;
+				}
+			}, delay);
+		}
 
-      <p>This page is currently under construction.</p>
+		// Call the function with the desired text and delay
+		displayTextOneCharAtATime("this site is currently under construction :/", 100);
+	</script>
 
-      </div>
-  </body>
+</body>
 </html>
