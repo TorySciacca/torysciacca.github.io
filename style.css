@@ -1,5 +1,5 @@
 body {
-    background-color: #ccc; /* Set background color to grey */
+    background-color: #e3e5e0; /* Set background color to grey */
   }
   
   .container {
@@ -15,6 +15,20 @@ body {
     box-sizing: border-box; /* Include padding and border in total width and height */
   }
   
+/* Add some margin to the top of the container to prevent it from being too close to the top of the screen */
+@media only screen and (max-width: 600px) {
+    .container {
+      margin-top: 20px;
+    }
+  }
+  
+  /* Add some margin to the bottom of the container to prevent it from being too close to the bottom of the screen */
+  @media only screen and (max-height: 768px) {
+    .container {
+      margin-bottom: 20px;
+    }
+  }
+
   /* Add styles for the form elements */
   form {
     display: flex;
@@ -34,15 +48,31 @@ body {
   }
   
   input[type="submit"] {
-    background-color: #4CAF50;
+    background-color: #e61e2a;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     padding: 10px;
     font-size: 16px;
+    box-sizing: border-box;
   }
-  
+
   input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #d80026;
+  }
+
+  input[type="button"]{
+    background-color: #e3e5e0;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+
+  input[type="button"]:hover {
+    background-color: #c6c8c3;
   }
