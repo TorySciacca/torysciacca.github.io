@@ -11,7 +11,7 @@ body {
     border-radius: 10%; /* Add rounded corners */
     margin: 100px auto;
     padding: 20px;/* Add some padding to the container */
-    min-height: 450px;
+    min-height: 500px;
     min-width: 450px;
     box-sizing: border-box;
   }
