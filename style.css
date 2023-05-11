@@ -8,7 +8,7 @@ body {
 
   .container {
     background-color: #fff; /* Set background color to white */
-    border-radius: 50px; /* Add rounded corners */
+    border-radius: 10%; /* Add rounded corners */
     margin: 100px auto;
     padding: 20px;/* Add some padding to the container */
     min-height: 450px;
@@ -35,7 +35,7 @@ body {
   input[type="text"], input[type="password"], input[type="email"] {
     width: 85%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
@@ -48,8 +48,8 @@ body {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    padding: 10px 24px;
-    font-size: 16px;
+    padding: 10px 10px;
+    font-size: 14px;
     box-sizing: border-box;
     margin: 10px; 
     min-width: 160px;
@@ -66,7 +66,7 @@ body {
     border-radius: 10px;
     cursor: pointer;
     padding: 10px 10px;
-    font-size: 16px;
+    font-size: 14px;
     box-sizing: border-box;
     margin: 10px; 
     min-width: 160px;
@@ -79,6 +79,7 @@ body {
   input[type="button"].yellow-button {
     background-color: #fac800;
     color: #000054;
+    min-width: 85%;
   }
 
   input[type="button"].yellow-button:hover {
