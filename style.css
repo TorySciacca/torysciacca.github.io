@@ -23,7 +23,6 @@ body {
     }
   }
 
-  /* Add styles for the form elements */
   form {
     display: flex;
     flex-direction: column;
@@ -34,12 +33,11 @@ body {
   
   input[type="text"], input[type="password"], input[type="email"] {
     width: 85%;
-    padding: 10px;
+    padding: 10px 10px;
     margin: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #c6c8c3;
     border-radius: 10px;
     box-sizing: border-box;
-    min-width: 250px;
   }
   
   input[type="submit"] {
@@ -48,10 +46,10 @@ body {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    padding: 10px 10px;
+    padding: 10px;
     font-size: 14px;
     box-sizing: border-box;
-    margin: 10px; 
+    margin: 10px;
     min-width: 160px;
   }
 
@@ -65,7 +63,7 @@ body {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    padding: 10px 10px;
+    padding: 10px;
     font-size: 14px;
     box-sizing: border-box;
     margin: 10px; 
@@ -99,3 +97,15 @@ body {
   .register {
     width: 45%;
   }  
+
+  img{
+    width: 400px;
+  }
+
+  nav{
+    flex: center
+  }
+
+  p{
+    margin: 10px;
+  }
