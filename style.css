@@ -1,24 +1,23 @@
 body {
     background-color: #e3e5e0; /* Set background color to grey */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
   }
-  
+
   .container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 400px;
     background-color: #fff; /* Set background color to white */
     border-radius: 10px; /* Add rounded corners */
-    padding: 20px; /* Add some padding to the container */
-    box-sizing: border-box; /* Include padding and border in total width and height */
+    margin: 100px auto;
+    max-width: 960px;
+    padding: 20px;/* Add some padding to the container */
+    box-sizing: border-box;
   }
   
-/* Media query for screen sizes smaller than 768px */
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
     .container {
-      max-width: 100%;
+      max-width: 90%;
       padding: 10px;
     }
   }
@@ -47,9 +46,10 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    padding: 10px;
+    padding: 10px 24px;
     font-size: 16px;
     box-sizing: border-box;
+    margin: 10px; /* add margin between buttons */
   }
 
   input[type="submit"]:hover {
@@ -62,9 +62,10 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    padding: 10px;
+    padding: 10px 24px;
     font-size: 16px;
     box-sizing: border-box;
+    margin: 10px; /* add margin between buttons */
   }
 
   input[type="button"]:hover {
