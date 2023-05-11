@@ -66,7 +66,7 @@ body {
     background-color: #e3e5e0;
     color: #000000;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
     padding: 10px;
     font-size: 16px;
@@ -76,3 +76,25 @@ body {
   input[type="button"]:hover {
     background-color: #c6c8c3;
   }
+
+  input[type="button"].yellow-button {
+    background-color: #fac800;
+    color: #000054;
+  }
+
+  input[type="button"].yellow-button:hover {
+    background-color: #dfb000;
+  }
+
+  input[type="button"].red-button {
+    background-color: #e61e2a;
+    color: #fff;
+    ;
+  }
+
+  input[type="button"].red-button:hover {
+    background-color: #d80026;
+  }
+
+
+  
