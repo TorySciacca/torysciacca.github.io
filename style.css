@@ -3,15 +3,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    font-family: Arial, sans-serif; /* Set a default font family */    
   }
 
   .container {
     background-color: #fff; /* Set background color to white */
-    border-radius: 10px; /* Add rounded corners */
+    border-radius: 50px; /* Add rounded corners */
     margin: 100px auto;
-    max-width: 960px;
     padding: 20px;/* Add some padding to the container */
+    min-height: 450px;
+    min-width: 450px;
     box-sizing: border-box;
   }
   
@@ -32,12 +33,13 @@ body {
   }
   
   input[type="text"], input[type="password"], input[type="email"] {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    min-width: 200px;
   }
   
   input[type="submit"] {
@@ -49,7 +51,8 @@ body {
     padding: 10px 24px;
     font-size: 16px;
     box-sizing: border-box;
-    margin: 10px; /* add margin between buttons */
+    margin: 10px; 
+    min-width: 160px;
   }
 
   input[type="submit"]:hover {
@@ -62,10 +65,11 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    padding: 10px 24px;
+    padding: 10px 10px;
     font-size: 16px;
     box-sizing: border-box;
-    margin: 10px; /* add margin between buttons */
+    margin: 10px; 
+    min-width: 160px;
   }
 
   input[type="button"]:hover {
