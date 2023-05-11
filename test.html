@@ -1,41 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login/Register</title>
-    <!--<link rel="stylesheet" href="style.css">-->
-</head>
-<body>
-	<h1>RMIT Alumni</h1>
-    <h2>Login</h2>
-	<form>
-		<input type="text" id="username" name="username" placeholder="RMIT ID or Email Address" required><br><br>
-		<input type="password" id="password" name="password" placeholder="Password" required><br><br>
-		<input type="submit" value="Login">
-        <input type="submit" value="Register"><br><br>
-        <label>or</label><br><br>
-        <input type="button" value="Organisation Certificate Verfication">
-	</form>
+	<link rel="stylesheet" href="style.css">
+		<div class="container">
+		<title>Login/Register</title>
+		<style>
+			section {
+				display: none;
+			}
+		</style>
+		<script>
+			window.onload = function() {
+				var sections = document.querySelectorAll('section');
+				var links = document.querySelectorAll('nav a');
 
-    <h2>Register</h2>
-	<form>
-		<input type="text" id="username" name="username" placeholder="RMIT ID" required><br><br>
-        <input type="email" name="email" placeholder="Email Address"> <br><br>
-		<input type="password" id="password" name="password" placeholder="Password" required><br><br>
-        <input type="password" id="password_confirm" name="password_confirm" placeholder="Confirm Password" required><br><br>
-        <input type="submit" value="Submit">
-	</form>
+				for (var i = 0; i < links.length; i++) {
+					links[i].addEventListener('click', function(e) {
+						e.preventDefault();
 
-	<h2>User</h2>
-	<form>
-		<h6>s1234567</h6>
-		<h6>Joel</h6>
-		<h6>Smith</h6>
-		<input type="text" id="username" name="username" placeholder="RMIT ID" required><br><br>
-        <input type="email" name="email" placeholder="Email Address"> <br><br>
-		<input type="password" id="password" name="password" placeholder="Password" required><br><br>
-        <input type="password" id="password_confirm" name="password_confirm" placeholder="Confirm Password" required><br><br>
-        <input type="submit" value="Submit">
-	</form>
+						for (var j = 0; j < sections.length; j++) {
+							sections[j].style.display = 'none';
+						}
 
+						var target = this.getAttribute('href');
+						document.querySelector(target).style.display = 'block';
+					});
+				}
+
+				document.querySelector('nav a').click();
+			};
+		</script>
+	</head>
+	<body>
+		<h1>RMIT Alumni</h1>
+
+		<section id="login">
+			<h2>Login</h2>
+			<form>
+				<input type="text" id="username" name="username" placeholder="RMIT ID or Email Address" required><br><br>
+				<input type="password" id="password" name="password" placeholder="Password" required><br><br>
+				<input type="submit" value="Login">
+				<input type="button" value="Register"><br><br>
+				<label>or</label><br><br>
+				<input type="button" href="#organisation" value="Organisation Certificate Verfication">
+			</form>
+		</section>
+
+		<section id="register">
+			<h2>Register</h2>
+			<form>
+				<input type="text" id="username" name="username" placeholder="RMIT ID" required><br><br>
+				<input type="email" name="email" placeholder="Email Address"> <br><br>
+				<input type="password" id="password" name="password" placeholder="Password" required><br><br>
+				<input type="password" id="password_confirm" name="password_confirm" placeholder="Confirm Password" required><br><br>
+				<input type="submit" value="Submit">
+			</form>
+		</section>
+
+		<section id="user">
+			<h2>User</h2>
+			<form>
+				<p>s1234567 Joel Smith</p>
+				<input type="button" value="Transcript"><br><br>
+				<input type="button" value="Graduate Certificate"><br><br><br><br>
+				<input type="button" value="Log Out">
+			</form>
+		</section>
+
+		<section id="organisation">
+			<h2>Organisation</h2>
+			<form>
+				<!--error messages go here--><br><br>
+				<input type="text" id="UCN" name="UCN" placeholder="Unique Certificate Number" required><br><br>
+				<input type="submit" value="Submit"><br><br><br><br>
+				<input type="button" value="Log Out">
+			</form>
+		</section>
+		<br>
+		<nav>
+			<a href="#login">Login</a>
+			<a href="#register">Register</a>
+			<a href="#user">User</a>
+			<a href="#organisation">Organisation</a>
+		</nav>
+	</div>
 </body>
 </html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login/Register</title>
+    <!--<link rel="stylesheet" href="style.css">-->
+</head>
+<body>
+	<h1>RMIT Alumni</h1>
+    <h2 id="login_header">Login</h2>
+	<form id="login_form">
+		<input type="text" id="username" name="username" placeholder="RMIT ID or Email Address" required><br><br>
+		<input type="password" id="password" name="password" placeholder="Password" required><br><br>
+		<input type="button" value="Login" onclick="showSection('user_section')">
+        <input type="button" value="Register" onclick="showSection('register_section')"><br><br>
+        <label>or</label><br><br>
+        <input type="button" value="Organisation Certificate Verification" onclick="showSection('org_section')">
+	</form>
+
+    <div id="register_section" style="display:none;">
+        <h2>Register</h2>
+        <form>
+            <input type="text" id="username" name="username" placeholder="RMIT ID" required><br><br>
+            <input type="email" name="email" placeholder="Email Address"> <br><br>
+            <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+            <input type="password" id="password_confirm" name="password_confirm" placeholder="Confirm Password" required><br><br>
+            <input type="button" value="Submit">
+        </form>
+    </div>
+
+    <div id="user_section" style="display:none;">
+        <h2>User</h2>
+        <form>
+            <p>s1234567 Joel Smith</p>
+            <input type="button" value="Transcript"><br><br>
+            <input type="button" value="Graduate Certificate"><br><br><br><br>
+            <input type="button" value="Log Out" onclick="showSection('login_section')">
+        </form>
+    </div>
+
+    <div id="org_section" style="display:none;">
+        <h2>Organisation</h2>
+        <form>
+            <!--error messages go here--><br><br>
+            <input type="text" id="UCN" name="UCN" placeholder="Unique Certificate Number" required><br><br>
+            <input type="button" value="Submit"><br><br><br><br>
+            <input type="button" value="Log Out" onclick="showSection('login_section')">
+        </form>
+    </div>
+
+    <script>
+        // Get all the section elements
+        const loginSection = document.getElementById("login-section");
+        const registerSection = document.getElementById("register-section");
+        const userSection = document.getElementById("user-section");
+        const orgSection = document.getElementById("org-section");
+      
+        // Get all the button elements
+        const loginButton = document.getElementById("login-button");
+        const registerButton = document.getElementById("register-button");
+        const orgButton = document.getElementById("org-button");
+      
+        // Show the login section by default and hide the rest
+        loginSection.style.display = "block";
+        registerSection.style.display = "none";
+        userSection.style.display = "none";
+        orgSection.style.display = "none";
+      
+        // Add event listeners to the buttons
+        loginButton.addEventListener("click", function() {
+          loginSection.style.display = "block";
+          registerSection.style.display = "none";
+          userSection.style.display = "none";
+          orgSection.style.display = "none";
+        });
+      
+        registerButton.addEventListener("click", function() {
+          loginSection.style.display = "none";
+          registerSection.style.display = "block";
+          userSection.style.display = "none";
+          orgSection.style.display = "none";
+        });
+      
+        orgButton.addEventListener("click", function() {
+          loginSection.style.display = "none";
+          registerSection.style.display = "none";
+          userSection.style.display = "none";
+          orgSection.style.display = "block";
+        });
+      </script>
+    </body>
+    </html>
