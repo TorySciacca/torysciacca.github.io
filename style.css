@@ -22,7 +22,7 @@ body {
   
   @media (max-width: 500px) {
     body {
-        background-color:#fff
+        background-color:#fff;
     }
   }
 
@@ -52,7 +52,6 @@ body {
     cursor: pointer;
     padding: 10px;
     font-size: 14px;
-    box-sizing: border-box;
     margin: 10px;
     min-width: 160px;
     min-height: 40px;
@@ -70,7 +69,6 @@ body {
     cursor: pointer;
     padding: 10px;
     font-size: 14px;
-    box-sizing: border-box;
     margin: 10px; 
     min-width: 160px;
     min-height: 40px;
