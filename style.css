@@ -105,7 +105,7 @@ body {
   }  
 
   img{
-    width: 400px;
+    max-width: 400px;
   }
 
   nav{
