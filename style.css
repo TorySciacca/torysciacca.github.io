@@ -20,7 +20,7 @@ body {
     box-sizing: border-box;
   }
   
-  @media (max-width: 500px) {
+  @media (max-width: 430px) {
     body {
         background-color:#fff
     }
@@ -106,6 +106,7 @@ body {
 
   img{
     max-width: 400px;
+    height: auto;
   }
 
   nav{
