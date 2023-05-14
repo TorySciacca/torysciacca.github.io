@@ -15,12 +15,12 @@ body {
     border-radius: 10%; /* Add rounded corners */
     margin: 100px auto;
     padding: 20px;/* Add some padding to the container */
-    min-height: 530px;
-    min-width: 450px;
+    max-height: 530px;
+    max-width: 450px;
     box-sizing: border-box;
   }
   
-  @media (max-width: 430px) {
+  @media (max-width: 500px) {
     body {
         background-color:#fff
     }
