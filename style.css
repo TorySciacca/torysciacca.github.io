@@ -20,12 +20,6 @@ body {
     box-sizing: border-box;
   }
   
-  @media (max-width: 500px) {
-    body {
-        background-color:#fff;
-    }
-  }
-
   form {
     display: flex;
     flex-direction: column;
@@ -53,8 +47,8 @@ body {
     padding: 10px;
     font-size: 14px;
     margin: 10px;
-    min-width: 160px;
-    min-height: 40px;
+    min-width: 150px;
+    height: 40px;
   }
 
   input[type="submit"]:hover {
@@ -70,7 +64,7 @@ body {
     padding: 10px;
     font-size: 14px;
     margin: 10px; 
-    min-width: 160px;
+    min-width: 150px;
     min-height: 40px;
   }
 
@@ -103,8 +97,10 @@ body {
   }  
 
   img{
+    width: 100%;
     max-width: 400px;
     height: auto;
+    align: center
   }
 
   nav{
@@ -127,3 +123,15 @@ body {
     min-width: 160px;
     min-height: 40px;
   }
+
+  @media (max-width: 500px) {
+    body {
+        background-color:#fff;
+    }
+    input[type="submit"] {
+        min-width: 100px;
+    }
+    input[type="button"]{
+        min-width: 100px;
+  }
+}
