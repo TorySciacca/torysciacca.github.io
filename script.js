@@ -43,7 +43,7 @@ function showSection(sectionId) {
     var password = document.getElementById("password").value;
   
     // Perform login validation (replace this with your own validation logic)
-    if (username === "admin" && password === "password") {
+    if (username === "s1234567" && password === "password") {
       showSection('user'); // Display the success section
     } else {
       alert("Invalid login details. Please try again."); // Display an error message
@@ -77,4 +77,14 @@ function showSection(sectionId) {
 
   function refreshPage() {
     location.reload();
+  }
+
+  
+  function requestDocuments(value) {
+
+    if (value == "Transcript") {
+        console.log('download transcript')
+    } else if (value == "Graduate Certificate") {
+     console.log('download Graduate Certificate')
+    }
   }
