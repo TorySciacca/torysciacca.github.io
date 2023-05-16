@@ -1,25 +1,3 @@
-/*
-window.onload = function() {
-    var sections = document.querySelectorAll('section');
-    var links = document.querySelectorAll('nav a');
-
-    for (var i = 0; i < links.length; i++) {
-        links[i].addEventListener('click', function(e) {
-            e.preventDefault();
-
-            for (var j = 0; j < sections.length; j++) {
-                sections[j].style.display = 'none';
-            }
-
-            var target = this.getAttribute('href');
-            document.querySelector(target).style.display = 'block';
-        });
-    }
-
-    document.querySelector('nav a').click();
-};
-*/
-
 window.onload = function() {
     showSection('login'); // Shows the login by default when the page loads
   };
@@ -53,7 +31,6 @@ function showSection(sectionId) {
   function showValidation(event) {
     event.preventDefault()
     
-
     // Hide all sections
     var UCN = document.getElementById("UCN").value;
     var isValid = false
@@ -72,18 +49,16 @@ function showSection(sectionId) {
         validationText.textContent = "Certificate is Invalid";
         validationText.style.backgroundColor = "#e61e2a";
     }
-
   }
 
   function refreshPage() {
     location.reload();
   }
-
   
-  function requestDocuments(value) {
+  function requestDocuments(value) { //change to request data from back-end
 
     if (value == "Transcript") {
-        console.log('download transcript')
+        console.log('download transcript') 
     } else if (value == "Graduate Certificate") {
      console.log('download Graduate Certificate')
     }
