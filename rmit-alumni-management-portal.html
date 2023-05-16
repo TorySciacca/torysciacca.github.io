@@ -16,9 +16,8 @@
 
         <section id="login" class="section">
             <form id="loginForm" onsubmit="validateLogin(event)">
-                <!--error messages go here-->
-                <input type="text" id="username" name="username" placeholder="RMIT ID or Email Address" required>
-                <input type="password" id="password" name="password" placeholder="Password" required>
+                <input type="text" id="username" name="username" placeholder="RMIT ID or Email Address" autocomplete="on" required>
+                <input type="password" id="password" name="password" placeholder="Password" autocomplete="on"required>
                 <span><input type="submit" value="Login">
                 <input type="button" onclick="showSection('register')" value="Register" class="grey-button"></span> 
                 <p>or</p>
@@ -28,18 +27,17 @@
 
         <section id="register" class="section">
             <form>
-                <!--error messages go here-->
+                <input type="text" id="Name" name="Name" placeholder="Name" required class="register">
                 <input type="text" id="username" name="username" placeholder="RMIT ID" required class="register">
                 <input type="email" name="email" placeholder="Email Address" required class="register">
                 <input type="password" id="password" name="password" placeholder="Password" required class="register">
-                <input type="password" id="password_confirm" name="password_confirm" placeholder="Confirm Password" required class="register">
+                <!--<input type="password" id="password_confirm" name="password_confirm" placeholder="Confirm Password" required class="register">-->
                 <input type="submit" value="Submit">
             </form>
         </section>
 
         <section id="user" class="section">
             <form>
-                <!--error messages go here-->
                 <p>s1234567 Joel Smith</p>
                 <input type="button" onclick="requestDocuments('Transcript')" value="Transcript" class="red-button">
                 <input type="button" onclick="requestDocuments('Graduate Certificate')" value="Graduate Certificate" class="red-button">
