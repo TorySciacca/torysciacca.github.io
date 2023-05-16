@@ -8,6 +8,10 @@ body {
     font-family: Arial, Helvetica, sans-serif; /* Set a default font family */    
   }
 
+  .section {
+    display: none;
+  }
+
   .container {
     display: flex;
     flex-direction: column;
@@ -114,7 +118,7 @@ body {
   }
 
   p.verfication{
-    background-color: #e61e2a;
+    background-color: #fff;
     color: #fff;
     padding: 10px;
     font-size: 14px;
