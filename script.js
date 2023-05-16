@@ -1,10 +1,13 @@
-function showSection(sectionName) {
-  var sections = ["loginSection", "registerSection", "userSection", "orgSection"];
-  for (var i = 0; i < sections.length; i++) {
-    if (sections[i] == sectionName) {
-      document.getElementById(sectionName).style.display = "block";
-    } else {
-      document.getElementById(sections[i]).style.display = "none";
-    }
-  }
-}
+window.onload = function() {
+    var sections = document.querySelectorAll('section');
+    var links = document.querySelectorAll('nav a');
+
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function(e) {
+            e.preventDefault();
+
+            for (var j = 0; j < sections.length; j++) {
+                sections[j].style.display = 'none';
+            }
+
+            var target = this.getAttribute('href
