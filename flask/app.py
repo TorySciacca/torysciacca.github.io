@@ -29,8 +29,8 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username_email = request.form.get('username_email')
-        password = request.form.get('password')
+        username_email = request.form.get('username_email').strip()
+        password = request.form.get('password').strip()
 
         if username_email and password:
             conn = sqlite3.connect('backend.db')

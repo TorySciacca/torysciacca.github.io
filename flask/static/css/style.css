@@ -89,7 +89,6 @@ body {
   input[type="button"].red-button {
     background-color: #e61e2a;
     color: #fff;
-    ;
   }
 
   input[type="button"].red-button:hover {
