@@ -4,24 +4,24 @@
 <head>
 	<meta name="viewport" 
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-	<script src="{{ url_for('static', filename='script.js') }}"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
 </head>
 <body>
-
+    
     <div class="container">
         <div class="logo">
-            <img onclick="refreshPage()" src="{{ url_for('static', filename='images/rmit-logo.png') }}"  alt="RMIT University Alumni" style="margin-top:40px;margin-bottom:30px">
+            <img onclick="window.location.href='/login';"" src="{{ url_for('static', filename='images/rmit-logo.png') }}"  alt="RMIT University Alumni" style="margin-top:40px;margin-bottom:30px">
         </div>
 
         <section id="login" class="section">
-            <form id="loginForm" onsubmit="validateLogin(event)">
-                <input type="text" id="username" name="username" placeholder="RMIT ID or Email Address" autocomplete="on" required>
+            <form id="loginForm" action="/login" method="POST">
+                <input type="text" id="username_email" name="username_email" placeholder="RMIT ID or Email Address" autocomplete="on" required>
                 <input type="password" id="password" name="password" placeholder="Password" autocomplete="on"required>
                 <span><input type="submit" value="Login">
-                <input type="button" onclick="showSection('register')" value="Register" class="grey-button"></span> 
+                <input type="button" onclick = "window.location.href='/register';"" value="Register" class="grey-button"></span> 
                 <p>or</p>
-                <input type="button" onclick="showSection('organisation')" value="Organisation Certificate Verfication" class="yellow-button">
+                <input type="button" onclick="window.location.href='/organisation';"" value="Organisation Certificate Verfication" class="yellow-button">
             </form>
         </section>
 

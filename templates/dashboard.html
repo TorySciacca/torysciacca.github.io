@@ -2,28 +2,26 @@
 <html>
 
 <head>
-	<meta name="viewport" 
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<link rel="stylesheet" href="">
 	<script src="script.js"></script>
 </head>
+
 <body>
+	<div class="container">
+		<div class="logo">
+			<img src="rmit-logo.png" alt="RMIT University Alumni" style="margin-top:40px;margin-bottom:30px">
+		</div>
 
-    <div class="container">
-        <div class="logo">
-            <img src="rmit-logo.png"  alt="RMIT University Alumni" style="margin-top:40px;margin-bottom:30px">
-        </div>
-
-        <section id="user" class="section">
-            <form>
-                <p>s1234567 Joel Smith</p>
-                <input type="button" onclick="requestDocuments('Transcript')" value="Transcript" class="red-button">
-                <input type="button" onclick="requestDocuments('Graduate Certificate')" value="Graduate Certificate" class="red-button">
-                <p></p>
-                <input type="button" onclick="refreshPage()" value="Log Out" class="log-out">
-            </form>
-        </section>
-
-    </div>
+		<section id="user" class="section">
+			<form>
+				<input type="button" onclick="requestDocuments('Transcript')" value="Transcript" class="red-button">
+				<input type="button" onclick="requestDocuments('Graduate Certificate')" value="Graduate Certificate" class="red-button">
+				<p></p>
+				<input type="button" onclick="refreshPage()" value="Log Out" class="log-out">
+			</form>
+		</section>
+	</div>
 </body>
+
 </html>
