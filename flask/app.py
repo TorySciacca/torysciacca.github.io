@@ -124,7 +124,7 @@ def validate_ucn():
     data = request.get_json()
     ucn = data.get('UCN')
 
-    cursor.execute("SELECT username FROM users WHERE username = ?", (ucn,))
+    cursor.execute("SELECT ucn FROM users WHERE ucn = ?", (ucn,))
     result = cursor.fetchone()
 
     return jsonify({'valid': result is not None})
