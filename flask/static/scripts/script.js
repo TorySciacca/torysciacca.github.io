@@ -1,3 +1,4 @@
+/*
 function requestDocuments(value) { //change to request data from back-end
 
   if (value == "Transcript") {
@@ -6,7 +7,7 @@ function requestDocuments(value) { //change to request data from back-end
     console.log('download Graduate Certificate')
   }
 }
-
+*/
 // log out function
 
 function logout() {

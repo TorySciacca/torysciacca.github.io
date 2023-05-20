@@ -1,5 +1,7 @@
 import sqlite3
 import bcrypt
+import io
+import re
 from flask import Flask, render_template, request, session, redirect, url_for, g, jsonify, request, send_file
 
 app = Flask(__name__)
@@ -79,7 +81,12 @@ def register():
             error = 'Username or email already exists. Please choose a different username or email.'
             return render_template('register.html', error=error)
 
-        # If username and email do not exist, proceed with registration
+        # Check if the username starts with 's' and followed by numbers
+        if not re.match(r'^s\d+$', username):
+            error = 'Your RMIT ID should start with lowercase s and be followed by numbers.'
+            return render_template('register.html', error=error)
+
+        # If username and email do not exist and username is valid, proceed with registration
         salt = bcrypt.gensalt()
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
 
@@ -97,12 +104,12 @@ def dashboard():
         username = session['username']
         conn = sqlite3.connect('backend.db')
         cursor = conn.cursor()
-        cursor.execute("SELECT name, username FROM users WHERE username = ?", (username,))
+        cursor.execute("SELECT name, username, transcript_link FROM users WHERE username = ?", (username,))
         result = cursor.fetchone()
         if result:
-            name, username = result
+            name, username, transcript_link = result
             conn.close()
-            return render_template('dashboard.html', name=name, username=username)
+            return render_template('dashboard.html', name=name, username=username, transcript_link=transcript_link)
 
     return redirect(url_for('login'))
 

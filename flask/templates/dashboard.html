@@ -17,12 +17,15 @@
         <form>
             
             <p>{{username}} {{ name }}</p>
-            <input type="button" onclick="requestDocuments('Transcript')" value="Transcript" class="red-button">
+            <input type="button" onclick="window.location.href='{{transcript_link}}'" value="Transcript" class="red-button">
             <input type="button" onclick="requestDocuments('Graduate Certificate')" value="Graduate Certificate" class="red-button">
             <p></p>
             <input type="button" onclick="logout()" value="Log Out" class="log-out">
         </form>
+
+        <img src="../images/s3967658_ts.png"
     </div>
+    
 </body>
 
 </html>
