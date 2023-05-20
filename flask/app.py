@@ -1,7 +1,5 @@
 import sqlite3
 import bcrypt
-import io
-import re
 from flask import Flask, render_template, request, session, redirect, url_for, g, jsonify, request, send_file
 
 app = Flask(__name__)
