@@ -127,6 +127,13 @@ body {
     min-height: 40px;
   }
 
+
+  p.error{
+    margin: 0px;
+    min-height: 20px;
+    text-align: center;
+  }
+
   @media (max-width: 500px) {
     body {
         background-color:#fff;

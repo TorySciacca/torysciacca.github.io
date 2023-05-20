@@ -28,6 +28,7 @@ def home():
 # Login page
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+
     if request.method == 'POST':
         username_email = request.form.get('username_email').strip()
         password = request.form.get('password').strip()
@@ -47,15 +48,19 @@ def login():
                     session['username'] = stored_username
                     conn.close()
                     return redirect(url_for('dashboard'))
-                else:
-                    error = 'Invalid password'
-            else:
-                error = 'User does not exist'
+                #else:
+                #    flash('Invalid password')
+                
+            #else:
+            #    error = f'{username_email} does not exist'
 
             conn.close()
-            return render_template('login.html', error=error, username_email=username_email)
-
+        
+        error = 'Invalid username or password'
+        return render_template('login.html', error=error)
+           
     return render_template('login.html')
+
 # Registration page
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -111,6 +116,7 @@ def logout():
     session.pop('username', None)
     return redirect(url_for('login'))
 
+# Function to validate UCN
 @app.route('/validate_ucn', methods=['POST'])
 def validate_ucn():
     db = get_db()

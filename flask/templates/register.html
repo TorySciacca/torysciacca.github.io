@@ -11,8 +11,14 @@
 
     <div class="container">
         <div class="logo">
-            <img onclick="window.location.href='/login';"" src="{{ url_for('static', filename='images/rmit-logo.png') }}"  alt="RMIT University Alumni" style="margin-top:40px;margin-bottom:30px">
+            <img onclick="window.location.href='/login';"" src="{{ url_for('static', filename='images/rmit-logo.png') }}"  alt="RMIT University Alumni" style="margin-top:40px;margin-bottom:10px">
         </div>
+
+            {% if error %}
+                <p class="error">{{ error }}</p>
+            {%else%}
+                <p class="error"></p>
+            {% endif %}
 
             <form action="/register" method="POST">
                 <input type="text" id="Name" name="Name" placeholder="Name" required class="register">
