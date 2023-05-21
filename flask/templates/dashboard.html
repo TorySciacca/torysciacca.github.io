@@ -17,13 +17,11 @@
         <form>
             
             <p>{{username}} {{ name }}</p>
-            <input type="button" onclick="window.location.href='{{transcript_link}}'" value="Transcript" class="red-button">
-            <input type="button" onclick="requestDocuments('Graduate Certificate')" value="Graduate Certificate" class="red-button">
+            <input type="button" onclick="window.location.href='{{transcript_link}}'" value="Transcript" class="red-button" {% if transcript_link is none %}disabled{% endif %}> 
+            <input type="button" onclick="window.location.href='{{graduate_certificate_link}}'" value="Graduate Certificate" class="red-button" {% if graduate_certificate_link is none %}disabled{% endif %}>
             <p></p>
             <input type="button" onclick="logout()" value="Log Out" class="log-out">
         </form>
-
-        <img src="../images/s3967658_ts.png"
     </div>
     
 </body>

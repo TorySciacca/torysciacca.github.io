@@ -102,12 +102,12 @@ def dashboard():
         username = session['username']
         conn = sqlite3.connect('backend.db')
         cursor = conn.cursor()
-        cursor.execute("SELECT name, username, transcript_link FROM users WHERE username = ?", (username,))
+        cursor.execute("SELECT name, username, transcript_link, graduate_certificate_link FROM users WHERE username = ?", (username,))
         result = cursor.fetchone()
         if result:
-            name, username, transcript_link = result
+            name, username, transcript_link, graduate_certificate_link = result
             conn.close()
-            return render_template('dashboard.html', name=name, username=username, transcript_link=transcript_link)
+            return render_template('dashboard.html', name=name, username=username, transcript_link=transcript_link, graduate_certificate_link=graduate_certificate_link)
 
     return redirect(url_for('login'))
 

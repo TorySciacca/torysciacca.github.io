@@ -95,6 +95,11 @@ body {
     background-color: #d80026;
   }  
 
+  input[type="button"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   .register {
     width: 45%;
   }  
