@@ -108,7 +108,7 @@ function register() {
         const transcriptBtn = document.getElementById('transcriptBtn');
         const certificateBtn = document.getElementById('certificateBtn');
 
-        if (data.transcript_link === null || data.transcript_link === ' ') {
+        if (data.transcript_link === null || data.transcript_link === ' ') { //null or empty string, may patch out later
 					transcriptBtn.disabled = true;
 			} else {
 					transcriptBtn.disabled = false;
@@ -117,7 +117,7 @@ function register() {
 					});
 			}
 
-			if (data.graduate_certificate_link === null || data.transcript_link === ' ') {
+			if (data.graduate_certificate_link === null || data.graduate_certificate_link === ' ') {
 					certificateBtn.disabled = true;
 			} else {
 					certificateBtn.disabled = false;
@@ -204,9 +204,7 @@ function showValidation(event) {
 function cleanUpInput(input) {
   // Convert input to lowercase
   const lowercaseInput = input.toLowerCase();
-
   // Remove whitespace from the input
   const cleanedInput = lowercaseInput.trim();
-
   return cleanedInput;
 }
