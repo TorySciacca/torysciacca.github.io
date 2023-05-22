@@ -104,7 +104,7 @@ function register() {
         // Handle retrieved user data
         //console.log(data);
         const userDetails = document.getElementById('user-details');
-        userDetails.textContent = `Username: ${data.username}`;
+        userDetails.textContent = `${data.username}`;
         const transcriptBtn = document.getElementById('transcriptBtn');
         const certificateBtn = document.getElementById('certificateBtn');
 
