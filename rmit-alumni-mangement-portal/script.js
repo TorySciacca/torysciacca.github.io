@@ -12,7 +12,7 @@ function logout() {
 
 // Login Function
 function login() {
-    const usernameOrEmail = document.getElementById('username_email').value;
+    const usernameOrEmail = cleanUpInput(document.getElementById('username_email').value);
     const password = document.getElementById('password').value;
 
     const data = {
@@ -49,7 +49,7 @@ function login() {
 
   // Register Function
 function register() {
-    const username = document.getElementById('username').value;
+    const username = cleanUpInput(document.getElementById('username').value);
     const password = document.getElementById('password').value;
   
     const data = {
@@ -113,7 +113,7 @@ function register() {
 			} else {
 					transcriptBtn.disabled = false;
 					transcriptBtn.addEventListener('click', () => {
-							downloadImage(data.transcript_link);
+							downloadImage(data.transcript_link,'transcript',data.username);
 					});
 			}
 
@@ -122,7 +122,7 @@ function register() {
 			} else {
 					certificateBtn.disabled = false;
 					certificateBtn.addEventListener('click', () => {
-							downloadImage(data.graduate_certificate_link);
+							downloadImage(data.graduate_certificate_link,'graduate-cetificate',data.username);
 					});
 			}
 	})
@@ -131,13 +131,19 @@ function register() {
     });
 }
 
-function downloadImage(imageURL) {
+function downloadImage(imageURL, fileType, username) {
+  const fileExtension = getFileExtension(imageURL);
+  const fileName = `${fileType}_${username}.${fileExtension}`;
+
   const link = document.createElement('a');
   link.href = imageURL;
-  link.download = 'transcript.png';
+  link.download = fileName;
   link.click();
 }
 
+function getFileExtension(filename) {
+  return filename.split('.').pop();
+}
 //update users in database
 function updateUser(username, transcriptLink, graduateCertificateLink, uniqueCertificateNumber) {
   const data = {
@@ -193,4 +199,14 @@ function showValidation(event) {
     document.getElementById("validationText").textContent = "An error has occured";
     document.getElementById("validationText").style.backgroundColor = "#fff";
   });
+}
+
+function cleanUpInput(input) {
+  // Convert input to lowercase
+  const lowercaseInput = input.toLowerCase();
+
+  // Remove whitespace from the input
+  const cleanedInput = lowercaseInput.trim();
+
+  return cleanedInput;
 }
