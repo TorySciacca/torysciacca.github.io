@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" 
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="logo">
+            <img onclick="window.location.href='/login';"" src="{{ url_for('static', filename='images/rmit-logo.png') }}"  alt="RMIT University Alumni" style="margin-top:40px;margin-bottom:30px">
+        </div>
+
+        <form>
+            
+            <p>{{username}} {{ name }}</p>
+            <input type="button" onclick="window.location.href='{{transcript_link}}'" value="Transcript" class="red-button" {% if transcript_link is none %}disabled{% endif %}> 
+            <input type="button" onclick="window.location.href='{{graduate_certificate_link}}'" value="Graduate Certificate" class="red-button" {% if graduate_certificate_link is none %}disabled{% endif %}>
+            <p></p>
+            <input type="button" onclick="logout()" value="Log Out" class="log-out">
+        </form>
+    </div>
+    
+</body>
+
+</html>

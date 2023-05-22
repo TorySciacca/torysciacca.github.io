@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" 
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="logo">
+            <img onclick="window.location.href='/login';"" src="{{ url_for('static', filename='images/rmit-logo.png') }}"  alt="RMIT University Alumni" style="margin-top:40px;margin-bottom:30px">
+        </div>
+
+            <form id="UCNValidationCheck" onsubmit="showValidation(event)">
+                <p id="validationText" class="verfication"></p><!--error messages go here-->
+                <input type="text" id="UCN" name="UCN" placeholder="Unique Certificate Number" required>
+                <input type="submit" value="Submit">
+                <p></p>
+                <input type="button" onclick="logout()" value="Log Out" class="log-out">
+            </form>
+    </div>
+</body>
+</html>
