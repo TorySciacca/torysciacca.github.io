@@ -1,4 +1,4 @@
-let baseURL = 'http://itsec-backend.herokuapp.com/';
+let baseURL = 'https://itsec-backend.herokuapp.com';
 
 function refreshPage() {
     location.reload();
