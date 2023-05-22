@@ -131,11 +131,72 @@ function register() {
     });
 }
 
-function downloadImage(url) {
-	const link = document.createElement('a');
-	link.href = url;
-	link.download = url.substring(url.lastIndexOf('/') + 1);
-	document.body.appendChild(link);
-	link.click();
-	document.body.removeChild(link);
+function downloadImage(imagePath) {
+  // Construct a relative URL based on the current page's URL
+  const currentURL = window.location.href;
+  const baseURL = currentURL.substring(0, currentURL.lastIndexOf('/'));
+  const relativeURL = baseURL + imagePath;
+
+  // Create a temporary anchor element to initiate the download
+  const anchor = document.createElement('a');
+  anchor.href = relativeURL;
+  anchor.download = '';
+  anchor.click();
+}
+
+//update users in database
+function updateUser(username, transcriptLink, graduateCertificateLink, uniqueCertificateNumber) {
+  const data = {
+    username: username,
+    transcript_link: transcriptLink,
+    graduate_certificate_link: graduateCertificateLink,
+    unique_certificate_number: uniqueCertificateNumber
+  };
+
+  fetch(baseURL +'/user', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Failed to update user.');
+      }
+    })
+    .then(result => {
+      console.log(result.message);
+      // Handle successful update
+    })
+    .catch(error => {
+      console.error(error.message);
+      // Handle error
+    });
+}
+
+function showValidation(event) {
+  event.preventDefault();
+
+  var UCN = document.getElementById("UCN").value;
+
+  fetch(baseURL + `/verify?ucn=${UCN}`, {
+    method: 'GET'
+  })
+  .then(response => {
+    if (response.status === 200) {
+      document.getElementById("validationText").textContent = "Certificate is Valid";
+      document.getElementById("validationText").style.backgroundColor = "#5eb85c";
+    } else {
+      document.getElementById("validationText").textContent = "Certificate is Invalid";
+      document.getElementById("validationText").style.backgroundColor = "#e61e2a";
+    }
+  })
+  .catch(error => {
+    console.error(error);
+    document.getElementById("validationText").textContent = "An error has occured";
+    document.getElementById("validationText").style.backgroundColor = "#fff";
+  });
 }
