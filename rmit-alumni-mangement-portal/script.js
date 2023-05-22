@@ -113,8 +113,8 @@ function register() {
 			} else {
 					transcriptBtn.disabled = false;
 					transcriptBtn.addEventListener('click', () => {
-							downloadImage(data.transcript_link);
-					});
+            window.location.href = data.transcript_link;
+          });
 			}
 
 			if (data.graduate_certificate_link === null) {
@@ -122,17 +122,13 @@ function register() {
 			} else {
 					certificateBtn.disabled = false;
 					certificateBtn.addEventListener('click', () => {
-							downloadImage(data.graduate_certificate_link);
-					});
+            window.location.href = data.graduate_certificate_link;
+          });
 			}
 	})
     .catch(error => {
         console.error(error.message);
     });
-}
-
-function downloadImage(imageURL) {
-  window.location.href = imageURL;
 }
 
 //update users in database
