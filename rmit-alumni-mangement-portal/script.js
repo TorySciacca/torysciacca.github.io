@@ -131,17 +131,8 @@ function register() {
     });
 }
 
-function downloadImage(imagePath) {
-  // Construct a relative URL based on the current page's URL
-  const currentURL = window.location.href;
-  const baseURL = currentURL.substring(0, currentURL.lastIndexOf('/'));
-  const relativeURL = baseURL + imagePath;
-
-  // Create a temporary anchor element to initiate the download
-  const anchor = document.createElement('a');
-  anchor.href = relativeURL;
-  anchor.download = '';
-  anchor.click();
+function downloadImage(imageURL) {
+  window.location.href = imageURL;
 }
 
 //update users in database
