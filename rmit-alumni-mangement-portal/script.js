@@ -108,7 +108,7 @@ function register() {
         const transcriptBtn = document.getElementById('transcriptBtn');
         const certificateBtn = document.getElementById('certificateBtn');
 
-        if (data.transcript_link === null) {
+        if (data.transcript_link === null || data.transcript_link === ' ') {
 					transcriptBtn.disabled = true;
 			} else {
 					transcriptBtn.disabled = false;
@@ -117,7 +117,7 @@ function register() {
 					});
 			}
 
-			if (data.graduate_certificate_link === null) {
+			if (data.graduate_certificate_link === null || data.transcript_link === ' ') {
 					certificateBtn.disabled = true;
 			} else {
 					certificateBtn.disabled = false;
