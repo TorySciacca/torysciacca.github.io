@@ -102,16 +102,24 @@ function register() {
     })
     .then(data => {
         // Handle retrieved user data
-        //console.log(data);
+        console.log(data);
         const userDetails = document.getElementById('user-details');
         userDetails.textContent = `Username: ${data.username}`;
         const transcriptBtn = document.getElementById('transcriptBtn');
         const certificateBtn = document.getElementById('certificateBtn');
+
         if (data.transcript_link === null) {
             transcriptBtn.disabled = true;
         }
+        else{
+          transcriptBtn.disabled = false;
+        }
+
         if (data.graduate_certificate_link === null) {
             certificateBtn.disabled = true;
+        }
+        else{
+          certificateBtn.disabled = false;
         }
     })
     .catch(error => {
