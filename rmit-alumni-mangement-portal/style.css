@@ -19,7 +19,7 @@ body {
     border-radius: 10%; /* Add rounded corners */
     margin: 100px auto;
     padding: 20px;/* Add some padding to the container */
-    max-height: 530px;
+    height: 530px;
     max-width: 450px;
     box-sizing: border-box;
   }
@@ -89,12 +89,16 @@ body {
   input[type="button"].red-button {
     background-color: #e61e2a;
     color: #fff;
-    ;
   }
 
   input[type="button"].red-button:hover {
     background-color: #d80026;
   }  
+
+  input[type="button"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 
   .register {
     width: 45%;
@@ -126,6 +130,13 @@ body {
     margin: 10px;
     min-width: 160px;
     min-height: 40px;
+  }
+
+
+  p.error{
+    margin: 0px;
+    min-height: 20px;
+    text-align: center;
   }
 
   @media (max-width: 500px) {

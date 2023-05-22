@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="logo">
+			<img onclick="window.location.href='login.html'" src="rmit-logo.png" alt="RMIT University Alumni"
+				style="margin-top:40px">
+		</div>
+		<p class="error"></p>
+		<form id="loginForm" onsubmit="event.preventDefault(), login()">
+			<input type="text" id="username_email" name="username_email" placeholder="RMIT ID or Email Address" autocomplete="on" required>
+			<input type="password" id="password" name="password" placeholder="Password" autocomplete="on"required>
+			<span>
+				<input type="submit" value="Login">
+				<input type="button" onclick="window.location.href='register.html'" value="Register" class="grey-button">
+				</span>
+			<p>or</p>
+			<input type="button" onclick="window.location.href='organisation.html'" value="Organisation Certificate Verification" class="yellow-button">
+		</form>
+	</div>
+</body>
+
+</html>
