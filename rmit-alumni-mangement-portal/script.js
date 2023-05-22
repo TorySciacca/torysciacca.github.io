@@ -102,7 +102,7 @@ function register() {
     })
     .then(data => {
         // Handle retrieved user data
-        console.log(data);
+        //console.log(data);
         const userDetails = document.getElementById('user-details');
         userDetails.textContent = `Username: ${data.username}`;
         const transcriptBtn = document.getElementById('transcriptBtn');
@@ -133,9 +133,9 @@ function register() {
 
 function downloadImage(imageURL) {
   const link = document.createElement('a');
-    link.href = data.transcript_link;
-    link.download = 'transcript.png';
-    link.click();
+  link.href = imageURL;
+  link.download = 'transcript.png';
+  link.click();
 }
 
 //update users in database
