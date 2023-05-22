@@ -18,4 +18,13 @@
 			<p></p>
 			<input type="button" onclick="logout()" value="Log Out" class="log-out">
 		</form>
+	<script>
+		window.addEventListener('DOMContentLoaded', function() {
+		// Retrieve the username from the URL
+		const urlParams = new URLSearchParams(window.location.search);
+		const username = urlParams.get('username');
+		// Call the get_user() function with the retrieved username
+		getUser(username);
+		});
+	</script>
 	</div>

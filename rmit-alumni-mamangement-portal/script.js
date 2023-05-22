@@ -109,28 +109,33 @@ function register() {
         const certificateBtn = document.getElementById('certificateBtn');
 
         if (data.transcript_link === null) {
-            transcriptBtn.disabled = true;
-        }
-        else{
-          transcriptBtn.disabled = false;
-        }
+					transcriptBtn.disabled = true;
+			} else {
+					transcriptBtn.disabled = false;
+					transcriptBtn.addEventListener('click', () => {
+							downloadImage(data.transcript_link);
+					});
+			}
 
-        if (data.graduate_certificate_link === null) {
-            certificateBtn.disabled = true;
-        }
-        else{
-          certificateBtn.disabled = false;
-        }
-    })
+			if (data.graduate_certificate_link === null) {
+					certificateBtn.disabled = true;
+			} else {
+					certificateBtn.disabled = false;
+					certificateBtn.addEventListener('click', () => {
+							downloadImage(data.graduate_certificate_link);
+					});
+			}
+	})
     .catch(error => {
         console.error(error.message);
     });
 }
-window.addEventListener('DOMContentLoaded', function() {
-    // Retrieve the username from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const username = urlParams.get('username');
 
-    // Call the get_user() function with the retrieved username
-    getUser(username);
-});
+function downloadImage(url) {
+	const link = document.createElement('a');
+	link.href = url;
+	link.download = url.substring(url.lastIndexOf('/') + 1);
+	document.body.appendChild(link);
+	link.click();
+	document.body.removeChild(link);
+}
