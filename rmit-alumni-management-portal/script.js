@@ -78,7 +78,7 @@ function register() {
       .then(result => {
         // Handle successful registration response
         // Redirect or perform any necessary actions
-        console.log(result.message);
+        alert(`${username} successfully registered`);
         window.location.href = 'login.html';
       })
       .catch(error => {
