@@ -20,7 +20,7 @@ body {
     margin: 100px auto;
     padding: 20px;/* Add some padding to the container */
     height: 530px;
-    max-width: 450px;
+    width: 450px;
     box-sizing: border-box;
   }
   
