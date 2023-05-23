@@ -48,45 +48,54 @@ function login() {
 }
 
   // Register Function
-function register() {
+  function register() {
     const username = cleanUpInput(document.getElementById('username').value);
     const password = document.getElementById('password').value;
   
-    const data = {
-      username: username,
-      password: password,
-      user_type: 'alumni'
-    };
+    try {
+      validateUsername(username)
+      validatePassword(password);
   
-    fetch(baseURL + '/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(response => {
-        if (response.status === 201) {
-          // User registered successfully
-          return response.json();
-        } else if (response.status === 409) {
-          throw new Error('Username already exists');
-        } else {
-          throw new Error('Invalid request');
-        }
+      const data = {
+        username: username,
+        password: password,
+        user_type: 'alumni'
+      };
+  
+      fetch(baseURL + '/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
       })
-      .then(result => {
-        // Handle successful registration response
-        // Redirect or perform any necessary actions
-        alert(`${username} successfully registered`);
-        window.location.href = 'login.html';
-      })
-      .catch(error => {
-        // Handle error or invalid request
-        console.error('Error:', error);
-        const errorElement = document.querySelector('.error');
-        errorElement.textContent = error.message;
-      });
+        .then(response => {
+          if (response.status === 201) {
+            // User registered successfully
+            return response.json();
+          } else if (response.status === 409) {
+            throw new Error('Username already exists');
+          } else {
+            throw new Error('Invalid request');
+          }
+        })
+        .then(result => {
+          // Handle successful registration response
+          alert(`${username} successfully registered`); // Alerts user to success
+          window.location.href = 'login.html'; // Redirects to homepage
+        })
+        .catch(error => {
+          // Handle error or invalid request
+          console.error('Error:', error);
+          const errorElement = document.querySelector('.error');
+          errorElement.textContent = error.message;
+        });
+    } catch (error) {
+      // Handle password validation error
+      console.error('Error:', error);
+      const errorElement = document.querySelector('.error');
+      errorElement.textContent = error.message;
+    }
   }
 
   function getUser(username) {
@@ -207,4 +216,20 @@ function cleanUpInput(input) {
   // Remove whitespace from the input
   const cleanedInput = lowercaseInput.trim();
   return cleanedInput;
+}
+
+function validateUsername(username) {
+  const usernameRegex = /^s\d+/;
+
+  if (!usernameRegex.test(username)) {
+    throw new Error('Your username must start with a "s" followed by numbers.');
+  }
+}
+
+function validatePassword(password) {
+  const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*]).{12,}$/;
+
+  if (!passwordRegex.test(password)) {
+    throw new Error('Your password must be at least 12 characters long and contain a mix of uppercase and lowercase letters, numbers, and symbols.');
+  }
 }
