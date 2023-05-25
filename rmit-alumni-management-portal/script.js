@@ -52,7 +52,9 @@ function login() {
 
   // Register Function
   function register() {
+    const name = document.getElementById('Name').value;
     const username = cleanUpInput(document.getElementById('username').value);
+    const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
   
     try {
@@ -62,7 +64,9 @@ function login() {
       const data = {
         username: username,
         password: password,
-        user_type: 'alumni'
+        user_type: 'alumni',
+        name: name,
+        email:email
       };
   
       fetch(baseURL + '/register', {
@@ -116,7 +120,7 @@ function login() {
         // Handle retrieved user data
         //console.log(data);
         const userDetails = document.getElementById('user-details');
-        userDetails.textContent = `${data.username} ${data.name}`;
+        userDetails.textContent = `${data.username}`;
         const transcriptBtn = document.getElementById('transcriptBtn');
         const certificateBtn = document.getElementById('certificateBtn');
         storeEncryptedType(data.user_type)
