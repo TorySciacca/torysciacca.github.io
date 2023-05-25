@@ -8,6 +8,7 @@ function refreshPage() {
 function logout() {
   // Redirect to the login.html page
   window.location.href = 'login.html';
+  clearAllStorage()
 }
 
 // Login Function
@@ -37,7 +38,9 @@ function login() {
     })
     .then(result => {
         // Redirect to the user.html page with the username
-        window.location.href = 'user.html?username=' + usernameOrEmail;
+        storeEncryptedUsername(usernameOrEmail)
+        window.location.href = 'user.html' //?username=' + storeEncryptedUsername(usernameOrEmail)
+        //window.location.href = 'user.html?username=' + usernameOrEmail;
     })
     .catch(error => {
         // Handle error or invalid credentials
@@ -113,9 +116,10 @@ function login() {
         // Handle retrieved user data
         //console.log(data);
         const userDetails = document.getElementById('user-details');
-        userDetails.textContent = `${data.username}`;
+        userDetails.textContent = `${data.username} ${data.name}`;
         const transcriptBtn = document.getElementById('transcriptBtn');
         const certificateBtn = document.getElementById('certificateBtn');
+        storeEncryptedType(data.user_type)
 
         if (data.transcript_link === null || data.transcript_link === ' ') { //null or empty string, may patch out later
 					transcriptBtn.disabled = true;
@@ -136,7 +140,8 @@ function login() {
 			}
 	})
     .catch(error => {
-        console.error(error.message);
+        console.error(error.message)
+        logout();
     });
 }
 
@@ -154,9 +159,16 @@ function getFileExtension(filename) {
   return filename.split('.').pop();
 }
 //update users in database
-function updateUser(username, transcriptLink, graduateCertificateLink, uniqueCertificateNumber) {
+function updateUser(username, email, name, transcriptLink, graduateCertificateLink, uniqueCertificateNumber) {
+
+  if (getDecryptedType() != 'admin'){
+    throw new Error('WARNING: ONLY LOGGED IN ADMINS CAN USE THIS FUNCTION')
+  }
+
   const data = {
     username: username,
+    email: email,
+    name: name,
     transcript_link: transcriptLink,
     graduate_certificate_link: graduateCertificateLink,
     unique_certificate_number: uniqueCertificateNumber
@@ -234,4 +246,58 @@ function validatePassword(password) {
   if (!passwordRegex.test(password)) {
     throw new Error('Your password must be at least 12 characters long and contain a mix of uppercase and lowercase letters, numbers, and symbols.');
   }
+}
+
+// Encrypt the username and store it in local storage
+function storeEncryptedUsername(username) { 
+  localStorage.removeItem('encryptedUsername') //clear if existing
+  // Encrypt the username (example: simple base64 encoding)
+  var encryptedUsername = btoa(username);
+  
+  // Store the encrypted username in local storage
+  localStorage.setItem('encryptedUsername', encryptedUsername);
+  return encryptedUsername
+}
+
+// Retrieve the encrypted username from local storage and decrypt it
+function getDecryptedUsername() {
+  // Retrieve the encrypted username from local storage
+  var encryptedUsername = localStorage.getItem('encryptedUsername');
+  
+  if (encryptedUsername) {
+    // Decrypt the username (example: base64 decoding)
+    var decryptedUsername = atob(encryptedUsername);
+    return decryptedUsername;
+  }
+  
+  return null; // No encrypted username found in local storage
+}
+
+// Clear all storage (both local storage and session storage)
+function clearAllStorage() {
+  localStorage.clear();
+  sessionStorage.clear();
+}
+
+function storeEncryptedType(type) { 
+  localStorage.removeItem('encryptedType') //clear if existing
+  // Encrypt the type
+  var encryptedType = btoa(type);
+  
+  // Store the encrypted type in local storage
+  localStorage.setItem('encryptedType', encryptedType);
+}
+
+// Retrieve the encrypted username from local storage and decrypt it
+function getDecryptedType() {
+  // Retrieve the encrypted username from local storage
+  var encryptedType = localStorage.getItem('encryptedType');
+  
+  if (encryptedType) {
+    // Decrypt the username (example: base64 decoding)
+    var deencryptedType = atob(encryptedType);
+    return deencryptedType;
+  }
+  
+  return null; // No encrypted username found in local storage
 }
