@@ -19,6 +19,8 @@
 			<input type="button" onclick="logout()" value="Log Out" class="log-out">
 		</form>
 	<script>
-		storeEncryptedType('organisation')
+		window.addEventListener('DOMContentLoaded', function() {
+		getUser(getDecryptedUsername());
+		});
 	</script>
 	</div>
