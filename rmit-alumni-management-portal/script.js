@@ -6,8 +6,8 @@ function refreshPage() {
 
 // Function to handle logout
 function logout() {
-    // Redirect to the login.html page
-    window.location.href = 'login.html';
+  // Redirect to the login.html page
+  window.location.href = 'login.html';
 }
 
 // Login Function
@@ -196,17 +196,19 @@ function showValidation(event) {
   })
   .then(response => {
     if (response.status === 200) {
-      document.getElementById("validationText").textContent = "Certificate is Valid";
-      document.getElementById("validationText").style.backgroundColor = "#5eb85c";
+      return response.json(); // Parse response body as JSON
     } else {
-      document.getElementById("validationText").textContent = "Certificate is Invalid";
-      document.getElementById("validationText").style.backgroundColor = "#e61e2a";
+      throw new Error("Certificate is Invalid");
     }
+  })
+  .then(data => {
+    document.getElementById("validationText").textContent = `${data.username}'s Certificate is Valid.`;
+    document.getElementById("validationText").style.backgroundColor = "#5eb85c";
   })
   .catch(error => {
     console.error(error);
-    document.getElementById("validationText").textContent = "An error has occured";
-    document.getElementById("validationText").style.backgroundColor = "#fff";
+    document.getElementById("validationText").textContent = "This Certificate is Invalid.";
+    document.getElementById("validationText").style.backgroundColor = "#e61e2a";
   });
 }
 
