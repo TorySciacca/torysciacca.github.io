@@ -6,9 +6,8 @@ function refreshPage() {
 
 // Function to handle logout
 function logout() {
-  // Redirect to the login.html page
-  window.location.href = 'login.html';
-  clearAllStorage()
+  clearAllStorage(); // Clear session storage
+  window.location.href = 'login.html'; // Redirect to the login.html page
 }
 
 // Login Function
@@ -205,7 +204,7 @@ function updateUser(username, email, name, transcriptLink, graduateCertificateLi
 function showValidation(event) {
   event.preventDefault();
 
-  var UCN = document.getElementById("UCN").value;
+  var UCN = cleanUpInput(document.getElementById("UCN").value);
 
   fetch(baseURL + `/verify?ucn=${UCN}`, {
     method: 'GET'
