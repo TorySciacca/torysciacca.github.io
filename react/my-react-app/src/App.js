@@ -1,94 +1,67 @@
-/*
-import { useState } from 'react';
-
-export default function MyApp() {
-  return (
-    <div>
-      <h1>Feed Eggs</h1>
-      <div>
-      <p>egg</p>
-      <MyButton />
-      <p>egg basket</p>
-      </div>
-    </div>
-  );
-}
-
-function MyButton() {
-  const [count, setCount] = useState(0);
-
-  function handleClick() {
-    setCount(count + 1);
-  }
-
-  return (
-    <button onClick={handleClick}>
-      {count} eggs
-    </button>
-  );
-}
-*/
-
-// start with 100 eggs
-// 25 clicks = 6 eggs
-// 25 clicks = 3 eggs
-// 25 clicks = 2 eggs
-// "Dude, you ran out of eggs. Would you like to buy an 80 pack of eggs? yes/no"
-// 1 click = 40 eggs
-// 41 eggs = win
-// You're looking at aa nude egg
-
 import React, { useState, useEffect } from 'react';
+import eggBasketImage from './eggBasket.png'; // Import the egg basket image
+import bucketImage from './egg.png'; // Import the bucket image
 
 export default function MyApp() {
   return (
     <div>
       <h1>Feed Eggs</h1>
       <div>
-        <MyButton />
+        <EggBasket />
+        <Bucket />
       </div>
     </div>
   );
 }
 
-function MyButton() {
+function EggBasket() {
   const [eggCount, setEggCount] = useState(80);
-  const [clickCount, setClickCount] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = () => {
-    setClickCount(clickCount + 1);
+  const handleDragStart = (event) => {
+    event.dataTransfer.setData('text/plain', 'egg');
   };
 
-  const threshold = 1;
-  const eggsPerClick = 1;
+  return (
+    <div className="egg-basket" draggable onDragStart={handleDragStart}>
+      <img src={eggBasketImage} alt="Egg Basket" />
+    </div>
+  );
+}
+
+function Bucket() {
+  const [eggCount, setEggCount] = useState(80);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleDragOver = (event) => {
+    event.preventDefault();
+  };
+
+  const handleDrop = (event) => {
+    event.preventDefault();
+    const data = event.dataTransfer.getData('text/plain');
+    if (data === 'egg') {
+      setEggCount(eggCount - 1);
+    }
+  };
 
   useEffect(() => {
-    const eggsSpent = Math.floor(clickCount / threshold) * eggsPerClick;
-    const remainingEggs = 80 - eggsSpent;
-    setEggCount(remainingEggs);
-
-    if (remainingEggs <= 0) {
+    if (eggCount <= 0) {
       setIsOpen(true);
     }
-  }, [clickCount]);
+  }, [eggCount]);
 
   const handlePopupClose = () => {
     setIsOpen(false);
   };
 
   const handleBuyEggs = () => {
-    setEggCount(40);
-    setClickCount(0);
+    setEggCount(80);
     setIsOpen(false);
   };
 
   return (
-    <div>
-      <button onClick={handleClick} disabled={eggCount <= 0}>
-        Feed Eggs
-      </button>
-      <p>Eggs remaining: {eggCount}</p>
+    <div className="bucket" onDragOver={handleDragOver} onDrop={handleDrop}>
+      <img src={bucketImage} alt="Bucket" />
       {isOpen ? (
         <Popup onClose={handlePopupClose} onBuyEggs={handleBuyEggs} />
       ) : null}
@@ -107,4 +80,4 @@ const Popup = ({ onClose, onBuyEggs }) => {
       </div>
     </div>
   );
-};
+}
