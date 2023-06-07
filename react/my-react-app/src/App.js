@@ -9,7 +9,7 @@ export default function MyApp() {
   
   const transferEgg = () => {
     if (eggBasketCount > 0) {
-      setEggBasketCount(eggBasketCount - 1);
+      setEggBasketCount(eggBasketCount - 20);
       setBucketCount(bucketCount + 1);
     }
   }
@@ -23,14 +23,21 @@ export default function MyApp() {
     <div className = 'Game-Window'>
       <h1>Feed Eggs</h1>
       <div>
-        <Bucket eggCount={bucketCount} transferEgg={transferEgg} resetEggCounts={resetEggCounts} />
-        <EggBasket eggCount={eggBasketCount} transferEgg={transferEgg} />
+        <Bucket eggCount={bucketCount} transferEgg={transferEgg} />
+        <EggBasket eggCount={eggBasketCount} transferEgg={transferEgg} resetEggCounts={resetEggCounts} />
       </div>
     </div>
   );
 }
 
-function EggBasket({ eggCount, transferEgg }) {
+function EggBasket({ eggCount, transferEgg, resetEggCounts }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (eggCount <= 0) {
+      setIsOpen(true);
+    }
+  }, [eggCount]);
 
   const handleDragStart = (event) => {
     event.dataTransfer.setData('text/plain', 'egg');
@@ -41,17 +48,27 @@ function EggBasket({ eggCount, transferEgg }) {
     transferEgg();
   };
 
+  const handlePopupClose = () => {
+    setIsOpen(false);
+  };
+
+  const handleBuyEggs = () => {
+    resetEggCounts();
+    setIsOpen(false);
+  };
+
   return (
     <div className="egg-basket" draggable onDragStart={handleDragStart} onDrop={handleDrop}>
       <img src={eggBasketImage} alt="Egg Basket" />
       <p>Eggs: {eggCount}</p>
+      {isOpen ? (
+        <Popup onClose={handlePopupClose} onBuyEggs={handleBuyEggs} />
+      ) : null}
     </div>
   );
 }
 
-function Bucket({ eggCount, transferEgg, resetEggCounts }) {
-  const [isOpen, setIsOpen] = useState(false);
-
+function Bucket({ eggCount, transferEgg }) {
   const handleDragOver = (event) => {
     event.preventDefault();
   };
@@ -64,28 +81,10 @@ function Bucket({ eggCount, transferEgg, resetEggCounts }) {
     }
   };
 
-  useEffect(() => {
-    if (eggCount <= 0) {
-      setIsOpen(true);
-    }
-  }, [eggCount]);
-
-  const handlePopupClose = () => {
-    setIsOpen(false);
-  };
-
-  const handleBuyEggs = () => {
-    resetEggCounts();
-    setIsOpen(false);
-  };
-
   return (
     <div className="bucket" onDragOver={handleDragOver} onDrop={handleDrop}>
       <img src={bucketImage} alt="Bucket" />
       <p>{eggCount}</p>
-      {isOpen ? (
-        <Popup onClose={handlePopupClose} onBuyEggs={handleBuyEggs} />
-      ) : null}
     </div>
   );
 }
