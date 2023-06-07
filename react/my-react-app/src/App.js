@@ -3,14 +3,13 @@ import eggBasketImage from './eggBasket.png'; // Import the egg basket image
 import bucketImage from './egg.png'; // Import the bucket image
 import './styles.css'; // Tell webpack that Button.js uses these styles
 
-
 export default function MyApp() {
   return (
-    <div>
+    <div className = 'Game-Window'>
       <h1>Feed Eggs</h1>
       <div>
-        <EggBasket />
         <Bucket />
+        <EggBasket />
       </div>
     </div>
   );
@@ -26,7 +25,7 @@ function EggBasket() {
   return (
     <div className="egg-basket" draggable onDragStart={handleDragStart}>
       <img src={eggBasketImage} alt="Egg Basket" />
-      Egg Basket ({eggCount} eggs)
+      Eggs: {eggCount}
     </div>
   );
 }
