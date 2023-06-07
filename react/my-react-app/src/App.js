@@ -1,37 +1,55 @@
 import React, { useState, useEffect } from 'react';
-import eggBasketImage from './eggBasket.png'; // Import the egg basket image
-import bucketImage from './egg.png'; // Import the bucket image
-import './styles.css'; // Tell webpack that Button.js uses these styles
+import eggBasketImage from './eggBasket.png'; 
+import bucketImage from './egg.png'; 
+import './styles.css';
 
 export default function MyApp() {
+  const [eggBasketCount, setEggBasketCount] = useState(80);
+  const [bucketCount, setBucketCount] = useState(0);
+  
+  const transferEgg = () => {
+    if (eggBasketCount > 0) {
+      setEggBasketCount(eggBasketCount - 1);
+      setBucketCount(bucketCount + 1);
+    }
+  }
+
+  const resetEggCounts = () => {
+    setEggBasketCount(80);
+    setBucketCount(0);
+  }
+
   return (
     <div className = 'Game-Window'>
       <h1>Feed Eggs</h1>
       <div>
-        <Bucket />
-        <EggBasket />
+        <Bucket eggCount={bucketCount} transferEgg={transferEgg} resetEggCounts={resetEggCounts} />
+        <EggBasket eggCount={eggBasketCount} transferEgg={transferEgg} />
       </div>
     </div>
   );
 }
 
-function EggBasket() {
-  const [eggCount, setEggCount] = useState(80);
+function EggBasket({ eggCount, transferEgg }) {
 
   const handleDragStart = (event) => {
     event.dataTransfer.setData('text/plain', 'egg');
   };
 
+  const handleDrop = (event) => {
+    event.preventDefault();
+    transferEgg();
+  };
+
   return (
-    <div className="egg-basket" draggable onDragStart={handleDragStart}>
+    <div className="egg-basket" draggable onDragStart={handleDragStart} onDrop={handleDrop}>
       <img src={eggBasketImage} alt="Egg Basket" />
-      Eggs: {eggCount}
+      <p>Eggs: {eggCount}</p>
     </div>
   );
 }
 
-function Bucket() {
-  const [eggCount, setEggCount] = useState(80);
+function Bucket({ eggCount, transferEgg, resetEggCounts }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDragOver = (event) => {
@@ -42,7 +60,7 @@ function Bucket() {
     event.preventDefault();
     const data = event.dataTransfer.getData('text/plain');
     if (data === 'egg') {
-      setEggCount(eggCount - 1);
+      transferEgg();
     }
   };
 
@@ -57,13 +75,14 @@ function Bucket() {
   };
 
   const handleBuyEggs = () => {
-    setEggCount(80);
+    resetEggCounts();
     setIsOpen(false);
   };
 
   return (
     <div className="bucket" onDragOver={handleDragOver} onDrop={handleDrop}>
       <img src={bucketImage} alt="Bucket" />
+      <p>{eggCount}</p>
       {isOpen ? (
         <Popup onClose={handlePopupClose} onBuyEggs={handleBuyEggs} />
       ) : null}
