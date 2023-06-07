@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import eggBasketImage from './eggBasket.png'; // Import the egg basket image
 import bucketImage from './egg.png'; // Import the bucket image
+import './styles.css'; // Tell webpack that Button.js uses these styles
+
 
 export default function MyApp() {
   return (
@@ -24,6 +26,7 @@ function EggBasket() {
   return (
     <div className="egg-basket" draggable onDragStart={handleDragStart}>
       <img src={eggBasketImage} alt="Egg Basket" />
+      Egg Basket ({eggCount} eggs)
     </div>
   );
 }
