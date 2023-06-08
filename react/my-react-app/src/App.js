@@ -15,6 +15,10 @@ export default function MyApp() {
   }
 
   const resetEggCounts = () => {
+    setEggBasketCount(eggBasketCount + 80);
+  }
+
+  const buy80Eggs = () => {
     setEggBasketCount(80);
     setBucketCount(0);
   }

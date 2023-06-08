@@ -1,7 +1,14 @@
-.egg-basket img,
+.egg-basket img {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+}
 .bucket img {
   width: 50px;
   height: 50px;
+  display: flex;
+  flex-direction: column;
 }
 
 .Game-Window div{
