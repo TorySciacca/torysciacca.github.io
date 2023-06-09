@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import eggBasketImage from './eggBasket.png'; 
-import bucketImage from './egg.png'; 
+import bucketImage from './eggMan.png'; 
 import './styles.css';
 
 export default function MyApp() {
