@@ -5,6 +5,7 @@ body {
 .Game-Window div{
   display: flex;
   justify-content: space-evenly;
+  border: black;
 }
 
 .egg-basket img {
