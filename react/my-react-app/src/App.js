@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import eggBasketImage from './eggBasket.png'; 
-import bucketImage from './eggMan.png'; 
+import eggMan from './eggMan.png'; 
 import './styles.css';
 
 export default function MyApp() {
@@ -87,7 +87,7 @@ function Bucket({ eggCount, transferEgg }) {
 
   return (
     <div className="bucket" onDragOver={handleDragOver} onDrop={handleDrop}>
-      <img src={bucketImage} alt="Bucket" />
+      <img src={eggMan} alt="Bucket" />
       <p>{eggCount}</p>
     </div>
   );
