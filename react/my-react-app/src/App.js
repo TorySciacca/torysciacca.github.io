@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import eggBasketImage from './eggBasket.png'; 
 import eggMan from './eggMan.png'; 
+import eggManOnDrag from './eggManOnDrag.png'; 
+import egg from './egg.png';
 import './styles.css';
 
 export default function MyApp() {
@@ -45,6 +47,9 @@ function EggBasket({ eggCount, transferEgg, resetEggCounts }) {
 
   const handleDragStart = (event) => {
     event.dataTransfer.setData('text/plain', 'egg');
+    const dragImage = new Image();
+    dragImage.src = egg;
+    event.dataTransfer.setDragImage(dragImage, 20, 20);
   };
 
   const handleDrop = (event) => {
@@ -73,8 +78,11 @@ function EggBasket({ eggCount, transferEgg, resetEggCounts }) {
 }
 
 function Bucket({ eggCount, transferEgg }) {
+  const [isDragging, setIsDragging] = useState(false);
+
   const handleDragOver = (event) => {
     event.preventDefault();
+    setIsDragging(true); // Set dragging state to true
   };
 
   const handleDrop = (event) => {
@@ -83,15 +91,23 @@ function Bucket({ eggCount, transferEgg }) {
     if (data === 'egg') {
       transferEgg();
     }
+    setIsDragging(false); // Reset dragging state after drop
+  };
+
+  const handleDragLeave = (event) => {
+    event.preventDefault();
+    setIsDragging(false); // Reset dragging state when dragged item leaves
   };
 
   return (
-    <div className="bucket" onDragOver={handleDragOver} onDrop={handleDrop}>
-      <img src={eggMan} alt="Bucket" />
+    <div className="bucket" onDragOver={handleDragOver} onDrop={handleDrop} onDragLeave={handleDragLeave}>
+      <img src={isDragging ? eggManOnDrag : eggMan} alt="Bucket" />
       <p>{eggCount}</p>
     </div>
   );
 }
+
+
 
 const Popup = ({ onClose, onBuyEggs }) => {
   return (

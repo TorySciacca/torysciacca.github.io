@@ -3,17 +3,12 @@ body {
 }
 
 .Game-Window div{
+
   display: flex;
   justify-content: space-evenly;
 }
 
-.egg-basket img {
-  width: 200px;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-}
-.bucket img {
+img {
   width: 200px;
   height: 200px;
   display: flex;
