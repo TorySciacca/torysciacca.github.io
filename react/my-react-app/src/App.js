@@ -27,8 +27,10 @@ export default function MyApp() {
 
   return (
     <div className = 'Game-Window'>
-      <h1>FEED EGGS</h1>
-      <div>
+      <div className='Title'>
+        <h1>FEED EGGS</h1>
+      </div>
+      <div className='Game-Content'>
         <Bucket eggCount={bucketCount} transferEgg={transferEgg} />
         <EggBasket eggCount={eggBasketCount} transferEgg={transferEgg} resetEggCounts={resetEggCounts} />
       </div>

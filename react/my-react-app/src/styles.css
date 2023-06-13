@@ -1,11 +1,33 @@
 body {
-  background-color: #497f93;
+  background-color: #a6dcf2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif; /* Set a default font family */    
+  }
+
+.Game-Window {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #497f93; 
+  border: #000c1d;
+  border-radius: 5%; /* Add rounded corners */
+  margin: 100px auto;
+  padding: 2px;/* Add some padding to the container */
+  height: 400px;
+  width: 700px;
+  box-sizing: border-box;
 }
 
-.Game-Window div{
+.Title{
+  align-self: center;
+}
 
+.Game-Content{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 img {
@@ -14,7 +36,6 @@ img {
   display: flex;
   flex-direction: column;
 }
-
 
 .popup {
   position:absolute;
