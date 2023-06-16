@@ -8,16 +8,12 @@ import './styles.css';
 export default function MyApp() {
   const [eggBasketCount, setEggBasketCount] = useState(80);
   const [bucketCount, setBucketCount] = useState(0);
-  const stage_one = 25 // 6 eggs
-  const stage_two = 40 // 3 eggs
-  const stage_three = 60 // 2 eggs
-  const stage_four = 61 // 40 eggs
-  const stage_five = 62
-  
+
   const transferEgg = () => {
     if (eggBasketCount > 0) {
       setEggBasketCount(eggBasketCount - 20);
-      setBucketCount(bucketCount + 1);
+      setBucketCount(bucketCount + 1)
+      check_stage(bucketCount);
     }
   }
 
@@ -74,7 +70,7 @@ function EggBasket({ eggCount, transferEgg, resetEggCounts }) {
   };
 
   return (
-    <div className="egg-basket" draggable onDragStart={handleDragStart} onDrop={handleDrop}>
+    <div className="egg-basket" draggable onDragStart={handleDragStart} onDrop={handleDrop} >
       <img src={eggBasketImage} alt="Egg Basket" />
       <p>Eggs: {eggCount}</p>
       {isOpen ? (
@@ -126,4 +122,74 @@ const Popup = ({ onClose, onBuyEggs }) => {
       </div>
     </div>
   );
+}
+
+function check_stage(bucketCount) {
+  const stage_one = 25 // 6 eggs
+  const stage_two = 50 // 3 eggs
+  const stage_three = 80 // 2 eggs
+  const stage_four = 81 // 40 eggs
+  const stage_five = 82 // you win
+  let win_condition = false
+  
+  console.log(bucketCount)
+
+  if (bucketCount === stage_one) {
+    console.log('stage one')
+    return(
+      <div className="popup">
+        <div className="popup-content">
+          <p>6 eggs</p>
+        </div>
+      </div>
+    );
+  }
+  else if (bucketCount === stage_two) {
+    return(
+      <div className="popup">
+        <div className="popup-content">
+          <p>3 eggs</p>
+        </div>
+      </div>
+    );
+  }
+  else if (bucketCount === stage_three) {
+    return(
+      <div className="popup">
+        <div className="popup-content">
+          <p>2 eggs</p>
+        </div>
+      </div>
+    );
+  }
+  else if (bucketCount === stage_four) {
+    return(
+      <div className="popup">
+        <div className="popup-content">
+          <p>40 eggs</p>
+        </div>
+      </div>
+    );
+  }
+  else if (bucketCount === stage_five) {
+    win_condition = true
+    return(
+      <div className="popup">
+        <div className="popup-content">
+          <p>41 eggs</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (win_condition) {
+    return(
+      <div className="popup">
+        <div className="popup-content">
+          <p>You Win</p>
+        </div>
+      </div>
+    );
+  }
+
 }
