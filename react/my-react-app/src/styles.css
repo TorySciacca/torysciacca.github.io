@@ -1,22 +1,23 @@
 body {
+  cursor: 'none';
   background-color: #a6dcf2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, Helvetica, sans-serif; /* Set a default font family */    
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif; /* Set a default font family */    
+}
 
 .Game-Window {
   display: flex;
   justify-content: center;
   flex-direction: column;
   background-color: #497f93; 
-  border: #000c1d;
-  border-radius: 5%; /* Add rounded corners */
-  margin: 100px auto;
-  padding: 2px;/* Add some padding to the container */
-  height: 400px;
-  width: 700px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #000c1d;
+  margin: 3vw auto;
+  height: 40vw;
+  width: 90vw;
   box-sizing: border-box;
 }
 
@@ -31,16 +32,25 @@ body {
 }
 
 img {
-  width: 200px;
-  height: 200px;
+  width: 12vw;
+  height: 12vw;
   display: flex;
+  padding: 3vw;
   flex-direction: column;
 }
 
 .popup {
   position:absolute;
-  background-color: #497f93; 
+  background-color: #a6dcf2; 
+  border-style: solid;
+  border-width: 3px;
+  border-color: #000c1d;
   top:50%;
   left:50%;
+  padding: 50px;
   transform:translate(-50%,-50%);
+}
+
+.p{
+  align-items: center;
 }

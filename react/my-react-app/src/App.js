@@ -8,6 +8,11 @@ import './styles.css';
 export default function MyApp() {
   const [eggBasketCount, setEggBasketCount] = useState(80);
   const [bucketCount, setBucketCount] = useState(0);
+  const stage_one = 25 // 6 eggs
+  const stage_two = 40 // 3 eggs
+  const stage_three = 60 // 2 eggs
+  const stage_four = 61 // 40 eggs
+  const stage_five = 62
   
   const transferEgg = () => {
     if (eggBasketCount > 0) {
@@ -109,14 +114,13 @@ function Bucket({ eggCount, transferEgg }) {
   );
 }
 
-
-
 const Popup = ({ onClose, onBuyEggs }) => {
   return (
     <div className="popup">
       <div className="popup-content">
         <p>Dude, you ran out of eggs.</p>
-        <p>Would you like to buy an 80 pack of eggs?</p>
+        <p>Would you like to buy</p>
+        <p>an 80 pack of eggs?</p>
         <button onClick={onBuyEggs}>Yes</button>
         <button onClick={onClose}>No</button>
       </div>
