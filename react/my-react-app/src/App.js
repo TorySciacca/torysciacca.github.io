@@ -13,7 +13,7 @@ export default function MyApp() {
     if (eggBasketCount > 0) {
       setEggBasketCount(eggBasketCount - 20);
       setBucketCount(bucketCount + 1)
-      check_stage(bucketCount);
+      CheckStage(bucketCount);
     }
   }
 
@@ -34,6 +34,7 @@ export default function MyApp() {
       <div className='Game-Content'>
         <Bucket eggCount={bucketCount} transferEgg={transferEgg} />
         <EggBasket eggCount={eggBasketCount} transferEgg={transferEgg} resetEggCounts={resetEggCounts} />
+        <CheckStage bucketCount={bucketCount} />
       </div>
     </div>
   );
@@ -49,10 +50,14 @@ function EggBasket({ eggCount, transferEgg, resetEggCounts }) {
   }, [eggCount]);
 
   const handleDragStart = (event) => {
-    event.dataTransfer.setData('text/plain', 'egg');
-    const dragImage = new Image();
-    dragImage.src = egg;
-    event.dataTransfer.setDragImage(dragImage, 20, 20);
+    if (eggCount <= 0) {
+      setIsOpen(true);  // Open the popup if there are no eggs left
+    } else {
+      event.dataTransfer.setData('text/plain', 'egg');
+      const dragImage = new Image();
+      dragImage.src = egg;
+      event.dataTransfer.setDragImage(dragImage, 20, 20);
+    }
   };
 
   const handleDrop = (event) => {
@@ -111,79 +116,80 @@ function Bucket({ eggCount, transferEgg }) {
 }
 
 const Popup = ({ onClose, onBuyEggs }) => {
+  const [answer, setAnswer] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (answer.toLowerCase() === 'yes') {
+      onBuyEggs();
+    } else if (answer.toLowerCase() === 'no') {
+      onClose();
+    }// else { alert("Please enter either 'yes' or 'no'");    }
+    setAnswer('');
+  };
+
+  const handleChange = (event) => {
+    setAnswer(event.target.value);
+  };
+
   return (
     <div className="popup">
       <div className="popup-content">
         <p>Dude, you ran out of eggs.</p>
         <p>Would you like to buy</p>
         <p>an 80 pack of eggs?</p>
-        <button onClick={onBuyEggs}>Yes</button>
-        <button onClick={onClose}>No</button>
+        <form onSubmit={handleSubmit}>
+          <input type="text" value={answer} onChange={handleChange} style={{textTransform: "uppercase"}}/>
+        </form>
       </div>
     </div>
   );
 }
-
-function check_stage(bucketCount) {
+function CheckStage({ bucketCount }) {
   const stage_one = 25 // 6 eggs
   const stage_two = 50 // 3 eggs
   const stage_three = 80 // 2 eggs
   const stage_four = 81 // 40 eggs
   const stage_five = 82 // you win
-  let win_condition = false
-  
-  console.log(bucketCount)
 
   if (bucketCount === stage_one) {
-    console.log('stage one')
-    return(
+    return (
       <div className="popup">
         <div className="popup-content">
-          <p>6 eggs</p>
+          <p>6 EGGS</p>
         </div>
       </div>
     );
   }
   else if (bucketCount === stage_two) {
-    return(
+    return (
       <div className="popup">
         <div className="popup-content">
-          <p>3 eggs</p>
+          <p>3 EGGS</p>
         </div>
       </div>
     );
   }
   else if (bucketCount === stage_three) {
-    return(
+    return (
       <div className="popup">
         <div className="popup-content">
-          <p>2 eggs</p>
+          <p>2 EGGS</p>
         </div>
       </div>
     );
   }
   else if (bucketCount === stage_four) {
-    return(
+    return (
       <div className="popup">
         <div className="popup-content">
-          <p>40 eggs</p>
+          <p>You now have 40 eggs.</p>
         </div>
       </div>
     );
   }
   else if (bucketCount === stage_five) {
-    win_condition = true
-    return(
-      <div className="popup">
-        <div className="popup-content">
-          <p>41 eggs</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (win_condition) {
-    return(
+    return (
       <div className="popup">
         <div className="popup-content">
           <p>You Win</p>
@@ -191,5 +197,8 @@ function check_stage(bucketCount) {
       </div>
     );
   }
-
+  else {
+    // If none of the conditions are met, render nothing
+    return null;
+  }
 }
