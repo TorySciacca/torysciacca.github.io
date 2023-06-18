@@ -32,8 +32,8 @@ body {
 }
 
 img {
-  width: 12vw;
-  height: 12vw;
+  width: 15vw;
+  height: 15vw;
   display: flex;
   padding: 3vw;
   flex-direction: column;
