@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import eggBasketImage from './eggBasket.png'; 
 import eggMan from './eggMan.png'; 
-import eggManOnDrag from './eggManOnDrag.png'; 
+import eggManOnDrag from './eggManEating.png'; 
 import egg from './egg.png';
 import './styles.css';
 
