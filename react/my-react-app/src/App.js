@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import eggBasketImage from './eggBasket.png'; 
-import eggMan from './eggMan.png'; 
-import eggManOnDrag from './eggManEating.png'; 
-import egg from './egg.png';
+import eggBasketImage from './images/eggBasket.png'; 
+import eggMan from './images/eggMan.gif'; 
+import eggManOnDrag from './images/eggManEating.gif'; 
+import egg from './images/egg.png';
 import './styles.css';
 
 export default function MyApp() {
@@ -11,7 +11,7 @@ export default function MyApp() {
 
   const transferEgg = () => {
     if (eggBasketCount > 0) {
-      setEggBasketCount(eggBasketCount - 20);
+      setEggBasketCount(eggBasketCount - 1);
       setBucketCount(bucketCount + 1)
       CheckStage(bucketCount);
     }
@@ -77,16 +77,27 @@ function EggBasket({ eggCount, transferEgg, resetEggCounts }) {
   return (
     <div className="egg-basket" draggable onDragStart={handleDragStart} onDrop={handleDrop} >
       <img src={eggBasketImage} alt="Egg Basket" />
-      <p>Eggs: {eggCount}</p>
+      <p>EGGS: {eggCount}</p>
       {isOpen ? (
         <Popup onClose={handlePopupClose} onBuyEggs={handleBuyEggs} />
       ) : null}
     </div>
   );
 }
-
 function Bucket({ eggCount, transferEgg }) {
   const [isDragging, setIsDragging] = useState(false);
+  const [isEating, setIsEating] = useState(false);
+  const [key, setKey] = useState(Math.random()); // For resetting gif
+
+  useEffect(() => {
+    if (isEating) {
+      const timer = setTimeout(() => {
+        setIsEating(false);
+      }, 700); // Change here for duration of animation
+
+      return () => clearTimeout(timer); // Clean up on unmount
+    }
+  }, [isEating]);
 
   const handleDragOver = (event) => {
     event.preventDefault();
@@ -98,6 +109,8 @@ function Bucket({ eggCount, transferEgg }) {
     const data = event.dataTransfer.getData('text/plain');
     if (data === 'egg') {
       transferEgg();
+      setIsEating(true);
+      setKey(Math.random()); // Reset gif by setting new key
     }
     setIsDragging(false); // Reset dragging state after drop
   };
@@ -109,7 +122,7 @@ function Bucket({ eggCount, transferEgg }) {
 
   return (
     <div className="bucket" onDragOver={handleDragOver} onDrop={handleDrop} onDragLeave={handleDragLeave}>
-      <img src={isDragging ? eggManOnDrag : eggMan} alt="Bucket" />
+      <img key={key} src={isEating ? eggManOnDrag : eggMan} alt="Bucket" />
       <p>{eggCount}</p>
     </div>
   );
@@ -148,7 +161,7 @@ const Popup = ({ onClose, onBuyEggs }) => {
 function CheckStage({ bucketCount }) {
   const stage_one = 25 // 6 eggs
   const stage_two = 50 // 3 eggs
-  const stage_three = 80 // 2 eggs
+  const stage_three = 75 // 2 eggs
   const stage_four = 81 // 40 eggs
   const stage_five = 82 // you win
 

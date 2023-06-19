@@ -1,10 +1,16 @@
+@font-face {
+  font-family: 'Egg';
+  src: local('Egg'),
+       url('./fonts/VCR_OSD_MONO_1.001.ttf') format('truetype'),
+}
+
 body {
   cursor: 'none';
   background-color: #a6dcf2;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Arial, Helvetica, sans-serif; /* Set a default font family */    
+  font-family: 'Egg';
 }
 
 .Game-Window {
