@@ -7,6 +7,8 @@ import eggManOnDrag from './images/eggManEating.gif';
 import egg from './images/egg.png';
 import './styles.css';
 
+ReactDOM.render(<MyApp />, document.getElementById('root'));
+
 export default function MyApp() {
   const [eggBasketCount, setEggBasketCount] = useState(80);
   const [bucketCount, setBucketCount] = useState(0);
@@ -217,5 +219,3 @@ function CheckStage({ bucketCount }) {
     return null;
   }
 }
-
-ReactDOM.render(<MyApp />, document.getElementById('root'));
