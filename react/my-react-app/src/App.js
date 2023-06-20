@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 
 import eggBasketImage from './images/eggBasket.png'; 
 import eggMan from './images/eggMan.gif'; 
@@ -217,5 +216,3 @@ function CheckStage({ bucketCount }) {
     return null;
   }
 }
-
-ReactDOM.render(<MyApp />, document.getElementById('root'));
