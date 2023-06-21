@@ -28,12 +28,6 @@ export default function MyApp() {
     setEggBasketCount(eggBasketCount + 80);
   }
 
-  // Function to buy 80 new eggs
-  const buy80Eggs = () => {
-    setEggBasketCount(80);
-    setBucketCount(0);
-  }
-
   // Return Game Window
   return (
     // Components representing different parts of the game
