@@ -7,8 +7,8 @@ import eggManOnDrag from './images/eggManEating.gif';
 import egg from './images/egg.png';
 import './styles.css';
 
-// Main Application Component
-export default function MyApp() {
+// Main Application
+export default function EggMan() {
   // State for tracking egg counts in the basket and bucket (egg man)
   const [eggBasketCount, setEggBasketCount] = useState(80);
   const [bucketCount, setBucketCount] = useState(0);
