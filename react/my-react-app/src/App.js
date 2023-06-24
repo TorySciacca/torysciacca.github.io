@@ -28,6 +28,12 @@ export default function EggMan() {
     setEggBasketCount(eggBasketCount + 80);
   }
 
+  // Function to set the egg count to 40 when stage 4 is reached
+  const set40Eggs = () => {
+    setEggBasketCount(40);
+  }
+  
+
   // Return Game Window
   return (
     // Components representing different parts of the game
@@ -196,6 +202,7 @@ function CheckStage({ bucketCount }) {
 
   if (bucketCount === stage_four) {
     console.log('Test') //Tests for stage_four condition outside of other stages 40 
+    set40Eggs()
   }
 
   // Display different messages based on the number of eggs in the bucket
