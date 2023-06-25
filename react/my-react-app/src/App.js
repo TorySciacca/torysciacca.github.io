@@ -32,7 +32,7 @@ export default function EggMan() {
   const set40Eggs = () => {
     setEggBasketCount(40);
   }
-  
+
 
   // Return Game Window
   return (
@@ -54,6 +54,9 @@ export default function EggMan() {
 function EggBasket({ eggCount, transferEgg, resetEggCounts }) {
   // State to control the opening of the popup
   const [isOpen, setIsOpen] = useState(false);
+
+  //var to track if resetCount function has been called
+  let showCount = false
 
   // React Hook to open the popup when there are no eggs left in the basket
   useEffect(() => {
@@ -88,20 +91,34 @@ function EggBasket({ eggCount, transferEgg, resetEggCounts }) {
 
   // Function to buy new eggs
   const handleBuyEggs = () => {
+    showCount = true
     resetEggCounts();
     setIsOpen(false);
   };
 
   // Render the EggBasket Component
-  return (
-    <div className="egg-basket" draggable onDragStart={handleDragStart} onDrop={handleDrop} >
-      <img src={eggBasketImage} alt="Egg Basket" />
-      <p>EGGS: {eggCount}</p>
-      {isOpen ? (
-        <Popup onClose={handlePopupClose} onBuyEggs={handleBuyEggs} />
-      ) : null}
-    </div>
-  );
+  if (showCount === true) {
+    return (
+      <div className="egg-basket" draggable onDragStart={handleDragStart} onDrop={handleDrop} >
+        <img src={eggBasketImage} alt="Egg Basket" />
+        <p></p>
+        {isOpen ? (
+          <Popup onClose={handlePopupClose} onBuyEggs={handleBuyEggs} />
+        ) : null}
+      </div>
+    );
+  }
+  else {
+    return (
+      <div className="egg-basket" draggable onDragStart={handleDragStart} onDrop={handleDrop} >
+        <img src={eggBasketImage} alt="Egg Basket" />
+        <p>EGGS: {eggCount}</p>
+        {isOpen ? (
+          <Popup onClose={handlePopupClose} onBuyEggs={handleBuyEggs} />
+        ) : null}
+      </div>
+    );
+  }
 }
 
 // Component representing the Bucket
