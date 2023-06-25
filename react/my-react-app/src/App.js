@@ -12,7 +12,7 @@ export default function EggMan() {
   // State for tracking egg counts in the basket and bucket (egg man)
   const [eggBasketCount, setEggBasketCount] = useState(80);
   const [bucketCount, setBucketCount] = useState(0);
-
+  
   // Function to transfer egg from basket to bucket
   const transferEgg = () => {
     // Check if there are any eggs left in the basket
@@ -90,9 +90,7 @@ function EggBasket({ eggCount, transferEgg, resetEggCounts }) {
 
   // Function to buy new eggs
   const handleBuyEggs = () => {
-    console.log(showCount);
-    setShowCount(false); // This state update will trigger a re-render
-    console.log(showCount);
+    setShowCount(false); 
     resetEggCounts();
     setIsOpen(false);
   };

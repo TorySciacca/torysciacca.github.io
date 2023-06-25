@@ -5,11 +5,13 @@
 }
 
 body {
-  cursor: 'none';
-  background-color: #a6dcf2;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  cursor: 'none';
+  background-color: #a6dcf2;
   font-family: 'Egg';
   cursor: url('./images/cursor.png'), auto;
 }
@@ -20,7 +22,7 @@ body {
   flex-direction: column;
   background-color: #497f93; 
   border-style: solid;
-  border-width: 3px;
+  border-width: 0.3vw;
   border-color: #000c1d;
   margin: 3vw auto;
   height: 40vw;
@@ -30,6 +32,7 @@ body {
 
 .Title{
   align-self: center;
+  font-size: 1.5vw;
 }
 
 .Game-Content{
