@@ -33,7 +33,6 @@ export default function EggMan() {
     setEggBasketCount(40);
   }
 
-
   // Return Game Window
   return (
     // Components representing different parts of the game
@@ -55,8 +54,8 @@ function EggBasket({ eggCount, transferEgg, resetEggCounts }) {
   // State to control the opening of the popup
   const [isOpen, setIsOpen] = useState(false);
 
-  //var to track if resetCount function has been called
-  let showCount = false
+  // State to track if resetCount function has been called
+  const [showCount, setShowCount] = useState(true);
 
   // React Hook to open the popup when there are no eggs left in the basket
   useEffect(() => {
@@ -91,41 +90,31 @@ function EggBasket({ eggCount, transferEgg, resetEggCounts }) {
 
   // Function to buy new eggs
   const handleBuyEggs = () => {
-    showCount = true
+    console.log(showCount);
+    setShowCount(false); // This state update will trigger a re-render
+    console.log(showCount);
     resetEggCounts();
     setIsOpen(false);
   };
 
   // Render the EggBasket Component
-  if (showCount === true) {
-    return (
-      <div className="egg-basket" draggable onDragStart={handleDragStart} onDrop={handleDrop} >
-        <img src={eggBasketImage} alt="Egg Basket" />
-        <p></p>
-        {isOpen ? (
-          <Popup onClose={handlePopupClose} onBuyEggs={handleBuyEggs} />
-        ) : null}
-      </div>
-    );
-  }
-  else {
-    return (
-      <div className="egg-basket" draggable onDragStart={handleDragStart} onDrop={handleDrop} >
-        <img src={eggBasketImage} alt="Egg Basket" />
-        <p>EGGS: {eggCount}</p>
-        {isOpen ? (
-          <Popup onClose={handlePopupClose} onBuyEggs={handleBuyEggs} />
-        ) : null}
-      </div>
-    );
-  }
+  return (
+    <div className="egg-basket" draggable onDragStart={handleDragStart} onDrop={handleDrop} >
+      <img src={eggBasketImage} alt="Egg Basket" />
+      <p>{showCount ? "" : `EGGS: ${eggCount}`}</p>
+      {isOpen ? (
+        <Popup onClose={handlePopupClose} onBuyEggs={handleBuyEggs} />
+      ) : null}
+    </div>
+  );
 }
+
 
 // Component representing the Bucket
 function Bucket({ eggCount, transferEgg }) {
   // State to control the dragging and eating states
-      //const [isDragging, setIsDragging] = useState(false);
   const [isEating, setIsEating] = useState(false);
+
   // Key to force re-render and reset gif
   const [key, setKey] = useState(Math.random()); 
 
