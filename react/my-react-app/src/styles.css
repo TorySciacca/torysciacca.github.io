@@ -42,7 +42,9 @@ img {
   width: 15vw;
   height: 15vw;
   display: flex;
-  padding: 3vw;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  padding-top: 4vw;
   flex-direction: column;
 }
 
@@ -60,4 +62,13 @@ img {
 
 .p{
   line-height: 1pt;
+  text-align: center;
+}
+
+.egg-basket {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.4vw;
 }

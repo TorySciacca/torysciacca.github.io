@@ -43,8 +43,8 @@ export default function EggMan() {
       </div>
       <div className='Game-Content'>
         <Bucket eggCount={bucketCount} transferEgg={transferEgg} />
-        <EggBasket eggCount={eggBasketCount} transferEgg={transferEgg} resetEggCounts={resetEggCounts} />
-        <CheckStage bucketCount={bucketCount} />
+        <EggBasket eggCount={eggBasketCount} transferEgg={transferEgg} resetEggCounts={resetEggCounts}/>
+        <CheckStage bucketCount={bucketCount} set40Eggs = {set40Eggs} />
       </div>
     </div>
   );
@@ -107,7 +107,7 @@ function EggBasket({ eggCount, transferEgg, resetEggCounts }) {
 // Component representing the Bucket
 function Bucket({ eggCount, transferEgg }) {
   // State to control the dragging and eating states
-  const [isDragging, setIsDragging] = useState(false);
+      //const [isDragging, setIsDragging] = useState(false);
   const [isEating, setIsEating] = useState(false);
   // Key to force re-render and reset gif
   const [key, setKey] = useState(Math.random()); 
@@ -126,7 +126,7 @@ function Bucket({ eggCount, transferEgg }) {
   // Function to handle drag over event
   const handleDragOver = (event) => {
     event.preventDefault();
-    setIsDragging(true); // Set dragging state to true
+    //setIsDragging(true); // Set dragging state to true
   };
 
   // Function to handle drop event
@@ -139,13 +139,13 @@ function Bucket({ eggCount, transferEgg }) {
       setIsEating(true);
       setKey(Math.random()); // Reset gif by setting new key
     }
-    setIsDragging(false); // Reset dragging state after drop
+    //setIsDragging(false); // Reset dragging state after drop
   };
 
   // Function to handle drag leave event
   const handleDragLeave = (event) => {
     event.preventDefault();
-    setIsDragging(false); // Reset dragging state when dragged item leaves
+    //setIsDragging(false); // Reset dragging state when dragged item leaves
   };
 
   // Render the Bucket Component
@@ -193,7 +193,7 @@ const Popup = ({ onClose, onBuyEggs }) => {
 }
 
 // Function to check and handle game stages
-function CheckStage({ bucketCount }) {
+function CheckStage({ bucketCount,set40Eggs }) {
   const stage_one = 25 // 6 eggs
   const stage_two = 50 // 3 eggs
   const stage_three = 75 // 2 eggs
