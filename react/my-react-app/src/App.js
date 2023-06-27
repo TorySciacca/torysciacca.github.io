@@ -57,6 +57,15 @@ function EggBasket({ eggCount, transferEgg, resetEggCounts }) {
   // State to track if resetCount function has been called
   const [showCount, setShowCount] = useState(true);
 
+  // Preloading images
+  useEffect(() => {
+    const imagesToLoad = [eggBasketImage, eggMan, eggManOnDrag, egg];
+    imagesToLoad.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
   // React Hook to open the popup when there are no eggs left in the basket
   useEffect(() => {
     if (eggCount <= 0) {
@@ -156,7 +165,7 @@ function Bucket({ eggCount, transferEgg }) {
   return (
     <div className="bucket" onDragOver={handleDragOver} onDrop={handleDrop} onDragLeave={handleDragLeave}>
       <img key={key} src={isEating ? eggManOnDrag : eggMan} alt="Bucket" />
-      <p>{eggCount}</p>
+      <p></p>
     </div>
   );
 }
