@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 import eggBasketImage from './images/eggBasket.png'; 
 import eggMan from './images/eggMan.gif'; 
-import eggManOnDrag from './images/eggManEating.gif'; 
+import eggManEating from './images/eggManEating.gif'; 
 import egg from './images/egg.png';
 import './styles.css';
 
@@ -59,7 +59,7 @@ function EggBasket({ eggCount, transferEgg, resetEggCounts }) {
 
   // Preloading images
   useEffect(() => {
-    const imagesToLoad = [eggBasketImage, eggMan, eggManOnDrag, egg];
+    const imagesToLoad = [eggBasketImage, eggMan, eggManEating, egg];
     imagesToLoad.forEach(src => {
       const img = new Image();
       img.src = src;
@@ -164,7 +164,7 @@ function Bucket({ eggCount, transferEgg }) {
   // Render the Bucket Component
   return (
     <div className="bucket" onDragOver={handleDragOver} onDrop={handleDrop} onDragLeave={handleDragLeave}>
-      <img key={key} src={isEating ? eggManOnDrag : eggMan} alt="Bucket" />
+      <img key={key} src={isEating ? eggManEating : eggMan} alt="Bucket" />
       <p></p>
     </div>
   );
