@@ -14,6 +14,7 @@ body {
   background-color: #a6dcf2;
   font-family: 'Egg';
   cursor: url('./images/cursor.png'), auto;
+  cursor: url('./images/cursor.png'), no-drop;
 }
 
 .Game-Window {
