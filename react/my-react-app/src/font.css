@@ -1,6 +1,0 @@
-/* File: fonts.css */
-@font-face {
-    font-family: 'Egg':
-    src: local('Egg'),
-         url('./fonts/ARCADECLASSIC.TTF') format('TTF'),
-}
