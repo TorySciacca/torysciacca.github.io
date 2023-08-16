@@ -10,30 +10,46 @@
 			font-size: 2em;
 			height: 75vh;
 			display: flex;
-			justify-content: center;
-			align-items: center;
+			flex-direction: column;
+			border: 20vh;
+			padding: 20vh;
+			gap: 15vh; /* Add space between divs */
+			max-width: 800px; /* Limit text width */
+			margin: 0 auto; /* Center align the content */
+		}
+		text1{
+			font-style: italic;
 		}
 	</style>
 </head>
 
 <body>
-	<div id="text"></div>
+	<div id="text1"></div>
+	<div id="text2"></div>
+	<div id="text3"></div>
+
 	<script>
-		function displayTextOneCharAtATime(text, delay) {
-			let index = 0;
-			const interval = setInterval(() => {
-				if (index === text.length) {
-					clearInterval(interval);
-				} else {
-					document.getElementById("text").innerHTML += text.charAt(index);
-					index++;
-				}
-			}, delay);
+		function displayTextStaggered(text, targetDiv, delay, startDelay = 0) {
+			setTimeout(() => {
+				let index = 0;
+				const interval = setInterval(() => {
+					if (index === text.length) {
+						clearInterval(interval);
+					} else {
+						document.getElementById(targetDiv).innerHTML += text.charAt(index);
+						index++;
+					}
+				}, delay);
+			}, startDelay);
 		}
+		const paragraph1 = "Hello I'm Tory Sciacca, a graduate software developer and multimedia artist."
+		// Call the function with the modified text for div with id "text1"
+		displayTextStaggered(paragraph1, "text1", 40);
 
-		// Call the function with the desired text and delay
-		displayTextOneCharAtATime("this site is currently under construction :/", 100);
+		const paragraph2 = "You can reach me at torysciacca@gmail.com or find me on github and linked-in.";
+
+		// Call the function with the modified text for div with id "text2"
+		displayTextStaggered(paragraph2, "text2", 40, 4000);
 	</script>
-
 </body>
 </html>
