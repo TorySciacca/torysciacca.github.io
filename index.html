@@ -8,30 +8,26 @@
 			color: white;
             font-family: Arial, Helvetica, sans-serif;
 			font-size: 2em;
-			height: 75vh;
+			height: 75%;
 			display: flex;
 			flex-direction: column;
-			border: 20vh;
-			padding: 30vh;
+			padding: 10vw 10vh;
+			padding-bottom: 0px;
 			gap: 15vh; /* Add space between divs */
 			max-width: 800px; /* Limit text width */
 			margin: 0 auto; /* Center align the content */
 			font-style: italic;
 		}
-		text1{
-			font-style: italic;
-		}
 		a {
 		color: grey;
 		}
+
 	</style>
 </head>
 
 <body>
 	<div id="text1"></div>
 	<div id="text2"></div>
-	<div id="text3"></div>
-
 	<script>
 		function displayTextStaggered(text, targetDiv, delay, startDelay = 0) {
 			setTimeout(() => {
@@ -64,11 +60,12 @@
 		displayTextStaggered(paragraph2, "text2", 40, 4000);
 
 		// Replace text in div with id "text2" after a delay of 1200 milliseconds (1.2 seconds)
-		replaceTextInDiv("text1", "Tory Sciacca", "<strong>Tory Sciacca</strong>", 1200);
+		replaceTextInDiv("text1", "Tory Sciacca", "<strong>Tory Sciacca</strong>", 1170);
 		
 		//Replace text in div for hyperlinks
-		replaceTextInDiv("text2", "GitHub", "<a href='https://github.com/TorySciacca'>GitHub</a>", 7000)
-		replaceTextInDiv("text2", "Linked-In", "<a href='https://www.linkedin.com/in/tory-sciacca/'>Linked-In</a>", 7800);
+		replaceTextInDiv("text2", "torysciacca@gmail.com", "<a href='mailto: torysciacca@gmail.com'>torysciacca@gmail.com</a>", 5950)
+		replaceTextInDiv("text2", "GitHub", "<a href='https://github.com/TorySciacca'>GitHub</a>", 6940)
+		replaceTextInDiv("text2", "Linked-In", "<a href='https://www.linkedin.com/in/tory-sciacca/'>Linked-In</a>", 7690);
 	</script>
 </body>
 </html>
