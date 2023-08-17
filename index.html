@@ -12,13 +12,17 @@
 			display: flex;
 			flex-direction: column;
 			border: 20vh;
-			padding: 20vh;
+			padding: 30vh;
 			gap: 15vh; /* Add space between divs */
 			max-width: 800px; /* Limit text width */
 			margin: 0 auto; /* Center align the content */
+			font-style: italic;
 		}
 		text1{
 			font-style: italic;
+		}
+		a {
+		color: grey;
 		}
 	</style>
 </head>
@@ -42,14 +46,29 @@
 				}, delay);
 			}, startDelay);
 		}
+
+		function replaceTextInDiv(divId, search, replacement, delay) {
+			setTimeout(() => {
+				const div = document.getElementById(divId);
+				div.innerHTML = div.innerHTML.replace(new RegExp(search, 'g'), replacement);
+			}, delay);
+		}
+
 		const paragraph1 = "Hello I'm Tory Sciacca, a graduate software developer and multimedia artist."
 		// Call the function with the modified text for div with id "text1"
 		displayTextStaggered(paragraph1, "text1", 40);
 
-		const paragraph2 = "You can reach me at torysciacca@gmail.com or find me on github and linked-in.";
+		const paragraph2 = "You can reach me at torysciacca@gmail.com or find me on GitHub and Linked-In.";
 
 		// Call the function with the modified text for div with id "text2"
 		displayTextStaggered(paragraph2, "text2", 40, 4000);
+
+		// Replace text in div with id "text2" after a delay of 1200 milliseconds (1.2 seconds)
+		replaceTextInDiv("text1", "Tory Sciacca", "<strong>Tory Sciacca</strong>", 1200);
+		
+		//Replace text in div for hyperlinks
+		replaceTextInDiv("text2", "GitHub", "<a href='https://github.com/TorySciacca'>GitHub</a>", 7000)
+		replaceTextInDiv("text2", "Linked-In", "<a href='https://www.linkedin.com/in/tory-sciacca/'>Linked-In</a>", 7800);
 	</script>
 </body>
 </html>
