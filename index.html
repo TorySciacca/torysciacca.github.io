@@ -22,6 +22,13 @@
 		a {
 			color: grey;
 		}
+		@media (max-device-width: 480px) /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */  { 
+			body {
+				font-size: 4em;
+				gap: 10vh;
+				padding: 1vw 1vh;
+				padding-top: 15vh;
+			}}
 	</style>
 </head>
 <body>
@@ -77,6 +84,7 @@
 		replaceTextInDiv("text2", "torysciacca@gmail.com", "<a href='mailto: torysciacca@gmail.com'>torysciacca@gmail.com</a>", 10);
 		replaceTextInDiv("text2", "GitHub", "<a href='https://github.com/TorySciacca'>GitHub</a>", 10);
 		replaceTextInDiv("text2", "Linked-In", "<a href='https://www.linkedin.com/in/tory-sciacca/'>Linked-In</a>", 10);
+
 	</script>
 </body>
 </html>
