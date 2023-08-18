@@ -3,12 +3,12 @@
 <head>
 	<title>Tory Sciacca</title>
 	<style>
+		/* Styling for the body of the page */
 		body {
 			background-color: black;
 			color: white;
             font-family: Arial, Helvetica, sans-serif;
 			font-size: 2em;
-			height: 75%;
 			display: flex;
 			flex-direction: column;
 			padding: 10vw 10vh;
@@ -18,23 +18,26 @@
 			margin: 0 auto; /* Center align the content */
 			font-style: italic;
 		}
+		/* Styling for links */
 		a {
-		color: grey;
+			color: grey;
 		}
-
 	</style>
 </head>
-
 <body>
+	<!-- Placeholder for the first text content -->
 	<div id="text1"></div>
+	<!-- Placeholder for the second text content -->
 	<div id="text2"></div>
 	<script>
+		// Function to display text one character at a time with a delay
 		function displayTextStaggered(text, targetDiv, delay, startDelay = 0) {
 			setTimeout(() => {
 				let index = 0;
+				// Interval to display characters with a delay
 				const interval = setInterval(() => {
 					if (index === text.length) {
-						clearInterval(interval);
+						clearInterval(interval); // Stop the interval when text is fully displayed
 					} else {
 						document.getElementById(targetDiv).innerHTML += text.charAt(index);
 						index++;
@@ -43,29 +46,37 @@
 			}, startDelay);
 		}
 
+		// Function to replace text in a div with a delay, checking for existence of the target text
 		function replaceTextInDiv(divId, search, replacement, delay) {
-			setTimeout(() => {
-				const div = document.getElementById(divId);
-				div.innerHTML = div.innerHTML.replace(new RegExp(search, 'g'), replacement);
-			}, delay);
+			const div = document.getElementById(divId);
+			const content = div.innerHTML;
+			// Check if the target text exists in the content
+			if (content.includes(search)) {
+				div.innerHTML = content.replace(new RegExp(search, 'g'), replacement); // Replace the target text
+			} else {
+				setTimeout(() => {
+					replaceTextInDiv(divId, search, replacement, delay); // Try again after the delay
+				}, delay);
+			}
 		}
 
-		const paragraph1 = "Hello I'm Tory Sciacca, a graduate software developer and multimedia artist."
-		// Call the function with the modified text for div with id "text1"
-		displayTextStaggered(paragraph1, "text1", 40);
+		// Initial content for the first paragraph
+		const paragraph1 = "Hello I'm Tory Sciacca, a graduate software developer and multimedia artist.";
+		// Display the modified text for div with id "text1" with no delay
+		displayTextStaggered(paragraph1, "text1", 30);
 
+		// Initial content for the second paragraph
 		const paragraph2 = "You can reach me at torysciacca@gmail.com or find me on GitHub and Linked-In.";
+		// Display the modified text for div with id "text2" after a 4 second (4000 ms) delay
+		displayTextStaggered(paragraph2, "text2", 30, 3000);
 
-		// Call the function with the modified text for div with id "text2"
-		displayTextStaggered(paragraph2, "text2", 40, 4000);
-
-		// Replace text in div with id "text2" after a delay of 1200 milliseconds (1.2 seconds)
-		replaceTextInDiv("text1", "Tory Sciacca", "<strong>Tory Sciacca</strong>", 1170);
+		// Replace the target text in div with id "text1" by checking every 10 milliseconds
+		replaceTextInDiv("text1", "Tory Sciacca", "<strong>Tory Sciacca</strong>", 10);
 		
-		//Replace text in div for hyperlinks
-		replaceTextInDiv("text2", "torysciacca@gmail.com", "<a href='mailto: torysciacca@gmail.com'>torysciacca@gmail.com</a>", 5950)
-		replaceTextInDiv("text2", "GitHub", "<a href='https://github.com/TorySciacca'>GitHub</a>", 6940)
-		replaceTextInDiv("text2", "Linked-In", "<a href='https://www.linkedin.com/in/tory-sciacca/'>Linked-In</a>", 7690);
+		// Replace specific text with hyperlinks in div with id "text2" by checking every 10 milliseconds
+		replaceTextInDiv("text2", "torysciacca@gmail.com", "<a href='mailto: torysciacca@gmail.com'>torysciacca@gmail.com</a>", 10);
+		replaceTextInDiv("text2", "GitHub", "<a href='https://github.com/TorySciacca'>GitHub</a>", 10);
+		replaceTextInDiv("text2", "Linked-In", "<a href='https://www.linkedin.com/in/tory-sciacca/'>Linked-In</a>", 10);
 	</script>
 </body>
 </html>
