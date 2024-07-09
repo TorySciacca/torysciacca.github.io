@@ -2,88 +2,38 @@
 <html>
 <head>
 	<title>Tory Sciacca</title>
-	<style>
-		/* Styling for the body of the page */
-		body {
-			background-color: black;
-			color: white;
-            font-family: monospace; 
-			font-size: 2em;
-			display: flex;
-			flex-direction: column;
-			padding: 10vw 10vh;
-			padding-bottom: 0px;
-			gap: 15vh; /* Add space between divs */
-			max-width: 800px; /* Limit text width */
-			margin: 0 auto; /* Center align the content */
-			/* font-style: italic;*/
-		}
-		/* Styling for links */
-		a {
-			color: grey;
-		}
-		@media (max-device-width: 480px) /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */  { 
-			body {
-				font-size: 4em;
-				gap: 10vh;
-				padding: 1vw 1vh;
-				padding-top: 15vh;
-			}}
-	</style>
+	<link rel="stylesheet" href="style.css">
+	<script src="main.js"></script>
 </head>
 <body>
+	<script>src="main.js"</script>
+	<div class="directory"><a href="index.html">/</a></div>
+
 	<!-- Placeholder for the first text content -->
-	<div id="text1"></div>
+	<div class="gen-text" id="text1"></div>
+
 	<!-- Placeholder for the second text content -->
-	<div id="text2"></div>
+	<div class="gen-text" id="text2"></div>
+
 	<script>
-		// Function to display text one character at a time with a delay
-		function displayTextStaggered(text, targetDiv, delay, startDelay = 0) {
-			setTimeout(() => {
-				let index = 0;
-				// Interval to display characters with a delay
-				const interval = setInterval(() => {
-					if (index === text.length) {
-						clearInterval(interval); // Stop the interval when text is fully displayed
-					} else {
-						document.getElementById(targetDiv).innerHTML += text.charAt(index);
-						index++;
-					}
-				}, delay);
-			}, startDelay);
-		}
-
-		// Function to replace text in a div with a delay, checking for existence of the target text
-		function replaceTextInDiv(divId, search, replacement, delay) {
-			const div = document.getElementById(divId);
-			const content = div.innerHTML;
-			// Check if the target text exists in the content
-			if (content.includes(search)) {
-				div.innerHTML = content.replace(new RegExp(search, 'g'), replacement); // Replace the target text
-			} else {
-				setTimeout(() => {
-					replaceTextInDiv(divId, search, replacement, delay); // Try again after the delay
-				}, delay);
-			}
-		}
-
 		// Initial content for the first paragraph
 		const paragraph1 = "Hello I'm Tory Sciacca, an indie game developer and multimedia artist.";
 		// Display the modified text for div with id "text1" with no delay
 		displayTextStaggered(paragraph1, "text1", 30, 0);
 
 		// Initial content for the second paragraph
-		const paragraph2 = "You can reach me at torysciacca@gmail.com or find me on GitHub and Linked-In.";
+		const paragraph2 = "You can reach me at torysciacca@gmail.com, find me on GitHub and Linked-In or view a showcase of my projects.";
 		// Display the modified text for div with id "text2" after a 4 second (4000 ms) delay
 		displayTextStaggered(paragraph2, "text2", 30, 3000);
 
 		// Replace the target text in div with id "text1" by checking every 10 milliseconds
-		replaceTextInDiv("text1", "Tory Sciacca", "<strong>Tory Sciacca</strong>", 10);
+		replaceTextInDiv("text1", "Tory Sciacca", "<a>Tory Sciacca</a>", 10);
 		
 		// Replace specific text with hyperlinks in div with id "text2" by checking every 10 milliseconds
 		replaceTextInDiv("text2", "torysciacca@gmail.com", "<a href='mailto: torysciacca@gmail.com'>torysciacca@gmail.com</a>", 10);
 		replaceTextInDiv("text2", "GitHub", "<a href='https://github.com/TorySciacca'>GitHub</a>", 10);
 		replaceTextInDiv("text2", "Linked-In", "<a href='https://www.linkedin.com/in/tory-sciacca/'>Linked-In</a>", 10);
+		replaceTextInDiv("text2", "projects", "<a href='projects.html'>projects</a>", 10);
 
 	</script>
 </body>
