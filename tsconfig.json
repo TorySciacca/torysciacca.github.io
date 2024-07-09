@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "target": "ES5",
+      "module": "ESNext",
+      "lib": ["es2015", "dom"], // Add "es2015" here or replace existing "lib" option
+      "outDir": "./dist",
+      "strict": true,
+      "esModuleInterop": true
+    }
+  }
+  
