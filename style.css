@@ -1,26 +1,31 @@
-	/* Styling for the body of the page */
+/* Styling for the body of the page */
+body {
+    background-color: black;
+    color: white;
+    font-family: monospace; 
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    padding: 10vw 10vh;
+    padding-bottom: 0px;
+    gap: 8vh; /* Add space between divs */
+    max-width: 800px; /* Limit text width */
+    margin: 0 auto; /* Center align the content */
+    /* font-style: italic;*/
+}
+/* Styling for links */
+a,strong {
+    color: greenyellow;
+    text-decoration: none;
+}
+.directory{
+    text-decoration: none;
+}
+
+@media (max-device-width: 480px) /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */  { 
     body {
-        background-color: black;
-        color: white;
-        font-family: monospace; 
-        font-size: 2em;
-        display: flex;
-        flex-direction: column;
-        padding: 10vw 10vh;
-        padding-bottom: 0px;
-        gap: 15vh; /* Add space between divs */
-        max-width: 800px; /* Limit text width */
-        margin: 0 auto; /* Center align the content */
-        /* font-style: italic;*/
-    }
-    /* Styling for links */
-    a {
-        color: grey;
-    }
-    @media (max-device-width: 480px) /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */  { 
-        body {
-            font-size: 4em;
-            gap: 10vh;
-            padding: 1vw 1vh;
-            padding-top: 15vh;
-        }}
+        font-size: 4em;
+        gap: 10vh;
+        padding: 1vw 1vh;
+        padding-top: 15vh;
+    }}
