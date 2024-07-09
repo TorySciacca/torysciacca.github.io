@@ -2,4 +2,4 @@
 
 My personal portfolio website as well as a playground for web dev experimentation.
 
-**Curenntly working on**: Recontructing portfolio site
+**Curenntly working on**: Recontructing portfolio site (again :p)
