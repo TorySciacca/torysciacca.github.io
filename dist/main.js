@@ -35,3 +35,35 @@ function replaceTextInDiv(divId, search, replacement, delay) {
         }
     }
 }
+function changeLinkColor(color) {
+    // Store the color in localStorage
+    localStorage.setItem('linkColor', color);
+    // Apply the color to all <a> tags immediately
+    applyStoredLinkColor();
+}
+// Function to retrieve color from localStorage and apply it
+function applyStoredLinkColor() {
+    var storedColor = localStorage.getItem('linkColor');
+    console.log(storedColor);
+    if (storedColor) {
+        // Select all <a> tags on the page
+        var links = document.getElementsByTagName('a');
+        // Iterate through each <a> tag and change its color
+        for (var i = 0; i < links.length; i++) {
+            links[i].style.color = storedColor;
+        }
+    }
+}
+// Apply stored color on page load
+applyStoredLinkColor();
+var baseColor;
+function swapColor() {
+    if (baseColor == 'greenyellow') {
+        baseColor = 'blue';
+        changeLinkColor('blue');
+    }
+    else {
+        baseColor = 'greenyellow';
+        changeLinkColor('greenyellow');
+    }
+}

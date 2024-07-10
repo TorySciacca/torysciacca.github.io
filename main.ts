@@ -32,3 +32,40 @@ function replaceTextInDiv(divId: string, search: string, replacement: string, de
         }
     }
 }
+function changeLinkColor(color: string) {
+    // Store the color in localStorage
+    localStorage.setItem('linkColor', color);
+
+    // Apply the color to all <a> tags immediately
+    applyStoredLinkColor();
+}
+
+// Function to retrieve color from localStorage and apply it
+function applyStoredLinkColor() {
+    const storedColor = localStorage.getItem('linkColor');
+    console.log(storedColor);
+    if (storedColor) {
+        // Select all <a> tags on the page
+        const links = document.getElementsByTagName('a');
+
+        // Iterate through each <a> tag and change its color
+        for (let i = 0; i < links.length; i++) {
+            links[i].style.color = storedColor;
+        }
+    }
+}
+
+// Apply stored color on page load
+applyStoredLinkColor();
+
+let baseColor: string
+
+function swapColor(): void{ 
+    if (baseColor == 'greenyellow') {
+        baseColor = 'blue'
+        changeLinkColor('blue')
+    } else {
+        baseColor = 'greenyellow'
+        changeLinkColor('greenyellow')
+    }
+}

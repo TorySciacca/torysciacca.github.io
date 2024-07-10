@@ -6,7 +6,6 @@
 	<script src="dist/main.js"></script>
 </head>
 <body>
-	<script>src="main.js"</script>
 	<div class="directory"><a href="index.html">/</a></div>
 
 	<!-- Placeholder for the first text content -->
@@ -14,7 +13,7 @@
 
 	<!-- Placeholder for the second text content -->
 	<div class="gen-text" id="text2"></div>
-
+	<script>src="main.js"</script>
 	<script>
 		// Initial content for the first paragraph
 		const paragraph1 = "Hello I'm Tory Sciacca, an indie game developer and multimedia artist.";
@@ -27,7 +26,7 @@
 		displayTextStaggered(paragraph2, "text2", 30, 3000);
 
 		// Replace the target text in div with id "text1" by checking every 10 milliseconds
-		replaceTextInDiv("text1", "Tory Sciacca", "<a>Tory Sciacca</a>", 10);
+		replaceTextInDiv("text1", "Tory Sciacca", '<a> Tory Sciacca</a>', 10); //href="#" onclick="swapColor()"
 		
 		// Replace specific text with hyperlinks in div with id "text2" by checking every 10 milliseconds
 		replaceTextInDiv("text2", "torysciacca@gmail.com", "<a href='mailto: torysciacca@gmail.com'>torysciacca@gmail.com</a>", 10);
