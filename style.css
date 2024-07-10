@@ -6,9 +6,9 @@ body {
     font-size: 2em;
     display: flex;
     flex-direction: column;
-    padding: 10vw 10vh;
+    padding: 5vw 10vh;
     padding-bottom: 0px;
-    gap: 8vh; /* Add space between divs */
+    gap: 6vh; /* Add space between divs */
     max-width: 800px; /* Limit text width */
     margin: 0 auto; /* Center align the content */
     /* font-style: italic;*/
