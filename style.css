@@ -21,6 +21,13 @@ a,strong {
 .directory{
     text-decoration: none;
 }
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60%;
+    height: auto;
+}
 
 @media (max-device-width: 480px) /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */  { 
     body {
