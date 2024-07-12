@@ -41,7 +41,7 @@ function changeLinkColor(color: string) {
 }
 
 // Function to retrieve color from localStorage and apply it
-function applyStoredLinkColor() {
+function applyStoredLinkColor(): void {
     const storedColor = localStorage.getItem('linkColor');
     console.log(storedColor);
     if (storedColor) {
@@ -60,7 +60,7 @@ applyStoredLinkColor();
 
 let baseColor: string
 
-function swapColor(): void{ 
+function swapColor(): void { 
     if (baseColor == 'greenyellow') {
         baseColor = 'blue'
         changeLinkColor('blue')
