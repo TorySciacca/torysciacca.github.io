@@ -43,7 +43,6 @@ function changeLinkColor(color: string) {
 // Function to retrieve color from localStorage and apply it
 function applyStoredLinkColor(): void {
     const storedColor = localStorage.getItem('linkColor');
-    console.log(storedColor);
     if (storedColor) {
         // Select all <a> tags on the page
         const links = document.getElementsByTagName('a');
@@ -69,3 +68,39 @@ function swapColor(): void {
         changeLinkColor('greenyellow')
     }
 }
+
+//Slideshow functions 
+
+let slideIndex = 1;
+
+function plusSlides(n:number) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n:number) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n: number): void {
+    const slides: HTMLCollectionOf<HTMLElement> = document.getElementsByClassName("slide") as HTMLCollectionOf<HTMLElement>;
+  
+    // Check if slides collection is empty
+    if (slides.length === 0) return;
+  
+    // Adjust slideIndex if out of bounds
+    if (n > slides.length) {
+      slideIndex = 1;
+    } else if (n < 1) {
+      slideIndex = slides.length;
+    }
+  
+    // Hide all slides
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+  
+    // Show the current slide
+    slides[slideIndex - 1].style.display = "block";
+
+  }
+  

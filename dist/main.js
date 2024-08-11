@@ -44,7 +44,6 @@ function changeLinkColor(color) {
 // Function to retrieve color from localStorage and apply it
 function applyStoredLinkColor() {
     var storedColor = localStorage.getItem('linkColor');
-    console.log(storedColor);
     if (storedColor) {
         // Select all <a> tags on the page
         var links = document.getElementsByTagName('a');
@@ -66,4 +65,31 @@ function swapColor() {
         baseColor = 'greenyellow';
         changeLinkColor('greenyellow');
     }
+}
+//Slideshow functions 
+var slideIndex = 1;
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+function showSlides(n) {
+    var slides = document.getElementsByClassName("slide");
+    // Check if slides collection is empty
+    if (slides.length === 0)
+        return;
+    // Adjust slideIndex if out of bounds
+    if (n > slides.length) {
+        slideIndex = 1;
+    }
+    else if (n < 1) {
+        slideIndex = slides.length;
+    }
+    // Hide all slides
+    for (var i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    // Show the current slide
+    slides[slideIndex - 1].style.display = "block";
 }

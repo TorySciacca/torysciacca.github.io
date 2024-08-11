@@ -1,3 +1,11 @@
+@media (max-device-width: 480px) /* smartphones, portrait 480x320 phones */  { 
+    body {
+        font-size: 4em;
+        gap: 10vh;
+        padding: 1vw 1vh;
+        padding-top: 15vh;
+    }}
+
 body {
     background-color: black;
     color: white;
@@ -22,14 +30,34 @@ img{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    max-width: 60%;
+    max-width: 80%;
     height: auto;
+    border-style: solid;
+    border-width: 0.1vh;
+    border-color: greenyellow;
 }
 
-@media (max-device-width: 480px) /* smartphones, portrait 480x320 phones */  { 
-    body {
-        font-size: 4em;
-        gap: 10vh;
-        padding: 1vw 1vh;
-        padding-top: 15vh;
-    }}
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -20px;
+    color: greenyellow;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  .slide {
+    display: none;
+  }
