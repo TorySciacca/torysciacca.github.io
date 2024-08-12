@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tory Sciacca</title>
+	<link rel="stylesheet" href="../style.css">
+    <script src="../dist/main.js"></script>
+</head>
+<body>
+	<div class="directory"><a href="../index.html">/</a><a href="../projects.html">projects/</a><a>covid-database-design-project</a></div>
+    <div class="slides">
+        <div class="slide">
+            <img src="covid-database-design-project/1.png" alt="">
+        </div>
+
+        <div class="slide">
+            <img src="covid-database-design-project/2.png" alt="">
+        </div>
+
+        <div class="slide">
+            <img src="covid-database-design-project/3.png" alt="">
+        </div>
+
+        <div class="slide">
+            <img src="covid-database-design-project/4.png" alt="">
+        </div>
+
+        <div class="slide">
+            <img src="covid-database-design-project/5.png" alt="">
+        </div>
+
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+    </div>
+    <div class="gen-text" id="text1" style="font-size: 0.7em;"></div>
+
+    <script>
+        showSlides(1)
+        const paragraph1 = `
+        A relational database designed from scratch based on a real world public dataset pulled from various sources.
+        Built with SQLite in SQLiteStudio for the final project. Attained a perfect score as a result. Available for download.
+        `
+
+        displayTextStaggered(paragraph1, "text1", 30, 0);
+
+        replaceTextInDiv("text1", "download", "<a href='https://drive.google.com/file/d/1pFAW1AZPpdT8pbwKydm_Ohr9682x1vs9/view?usp=sharing'>download</a>", 10);
+    </script>
+</body>
+</html>
