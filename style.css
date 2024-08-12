@@ -31,6 +31,7 @@ img{
     margin-left: auto;
     margin-right: auto;
     max-width: 80%;
+    max-height: 720px;
     height: auto;
     border-style: solid;
     border-width: 0.1vh;
