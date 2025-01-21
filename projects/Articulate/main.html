@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tory's Articulate</title>
+        <link rel="Stylesheet" href = "style.css">
+    </head>
+</html>
+
+<body>
+    <h1>Articulate</h1>
+    
+    <div class="prompts">
+        <div class="promptContainer">
+            <p class="category" style="background-color:gold">P </p>       
+            <p id = "p" class="prompt"></p>
+            <p id = "pSpade" class="category" style="background-color: gold"> </p>
+        </div>
+
+        <div class="promptContainer">
+            <p class="category" style="background-color:royalblue">W </p>       
+            <p id = "w" class="prompt"></p>
+            <p id = "wSpade" class="category" style="background-color: royalblue"> </p>
+        </div>
+
+        <div class="promptContainer">
+            <p class="category" style="background-color:deepskyblue">O</p>
+            <p id = "o" class="prompt"></p>
+            <p id = "oSpade" class="category" style="background-color: deepskyblue;"></p>
+        </div>
+
+        <div class="promptContainer">
+            <p class="category" style="background-color: orange">A</p>
+            <p id = "a" class="prompt"></p>
+            <p id = "aSpade" class="category" style="background-color: orange;"></p>
+        </div>
+        <div class="promptContainer">
+            <p class="category" style="background-color:seagreen">N</p>
+            <p id = "n" class="prompt"></p>
+            <p id = "nSpade" class="category" style="background-color: seagreen;"></p>
+        </div>
+        <div class="promptContainer">
+            <p class="category" style="background-color: red">R</p>        
+            <p id = 'r' class="prompt"></p>
+            <p  id = "rSpade" class="category" style="background-color: red;"></p>
+        </div>
+    </div>
+
+    <p class="timer">30</p>
+
+    <div class="controls">
+        <button id="start">Start</button>
+        <button id="reset" >Reset</button>
+        <button id="pause" disabled>Pause</button>
+    </div>
+
+    <div class="controls">
+        <button id="prev" disabled>Prev</button>
+        <button id="next" disabled> Next</button>
+        <button id="confirm" disabled>✓</button>
+    </div>
+
+    <p class="score" id="score" >Total: 0 Skips: 0 </p>
+    
+    <div class="players">
+        <button id="p1" style="background-color: deepskyblue;">1</button> 
+        <button hidden id="p2" style="background-color: deepskyblue;">1</button> 
+        <button hidden id="p3" style="background-color: deepskyblue;">1</button> 
+        <button hidden id="p4" style="background-color: deepskyblue;">1</button> 
+        <button hidden id="p5" style="background-color: deepskyblue;">1</button> 
+        <button id="addPlayer" style="width: 5vh;">+</button>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>

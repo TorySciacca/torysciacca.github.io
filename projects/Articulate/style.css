@@ -1,0 +1,99 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 2vh;
+    font-weight: 700;
+}
+h1{
+    text-align: center;
+    font-size: 8vh;
+    margin: 3vh;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.prompts{
+    display: flex;
+    margin: 0 auto;
+    flex-direction:column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 50vw;
+}
+
+.promptContainer{
+    align-items: center;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    height: 8vh;
+}
+
+.players{
+   display: flex;
+   align-items: center;
+   align-self: center;
+   justify-content:center;
+}
+
+.category{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 4vh;
+    background-color: white; 
+    border: 0.5vh solid black; 
+    color: black; 
+    padding: 1vh; 
+    width: 4vh;
+    height: 4vh;
+    display: inline-block;
+ }
+
+ .prompt{
+    padding: 2vh;
+    width: 25vh;
+    text-align: center;
+ }
+
+ .timer,.score{
+    text-align: center;
+    font-size: 3vh;
+    font-family: monospace;
+    font-weight: 800;
+    font-stretch: expanded;
+    margin: 1vh;
+ }
+
+ .controls,.score{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    justify-content: center;
+ }
+
+ button{
+    padding: 0.6em;
+    width: 20vh;
+    margin: 0.8vh;
+    border: 0.2em solid black;
+    font-size: 2vh;
+    color: black;
+    background-color: white;
+    font-weight: 700;
+ }
+
+ button:hover{
+    background-color: black;
+    color: white;
+ }
+
+ button:active{
+    background-color: black;
+    color: black;
+ }
+
+ button:disabled{
+    border: 0.2em gray solid;
+    background-color: lightgray;
+    color: gray;
+    background-color: lightgray;
+ }
