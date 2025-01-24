@@ -19,6 +19,7 @@ let score = 0;
 
 //players
 const newPlayer = document.getElementById('addPlayer')
+const removePlayer = document.getElementById('removePlayer')
 let noPlayers = 1
 const p1 = document.getElementById('p1')
 const p2 = document.getElementById('p2')
@@ -35,6 +36,17 @@ newPlayer.addEventListener('click', function() {
         case 3: p3.hidden = false; break;
         case 4: p4.hidden = false; break;
         case 5: p5.hidden = false; break;
+    } 
+}})
+
+removePlayer.addEventListener('click', function() {
+    if (noPlayers > 1){
+        noPlayers--
+    switch (noPlayers) {
+        case 1: p2.hidden = true; break;
+        case 2: p3.hidden = true; break;
+        case 3: p4.hidden = true; break;
+        case 4: p5.hidden = true; break;
     } 
 }})
 
