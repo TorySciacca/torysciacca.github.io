@@ -17,6 +17,8 @@ h1{
     flex-direction:column;
     align-items: center;
     justify-content: flex-start;
+    text-align: left;
+    font-weight: lighter;
     width: 50vw;
 }
 
@@ -50,8 +52,7 @@ h1{
 
  .prompt{
     padding: 2vh;
-    width: 25vh;
-    text-align: center;
+    width: 45vh;
  }
 
  .timer,.score{
