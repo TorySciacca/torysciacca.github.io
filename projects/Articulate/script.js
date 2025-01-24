@@ -50,16 +50,22 @@ removePlayer.addEventListener('click', function() {
     } 
 }})
 
-const maxScore = 48
+const maxScore = 49 // according to Articulate board
+
 //const colorOrder = ['deepskyblue','orange','seagreen','red','white','gold','royalblue']
 const colorOrder = ['deepskyblue','orange','white','royalblue','gold','red','seagreen']
 
 function updatePlayer(playerNo, increment = 1){
     let currentScore = parseInt(document.getElementById('p'+playerNo).innerText)
-    if (currentScore < maxScore && currentScore + increment > 0){
+    if (currentScore + increment < maxScore && currentScore + increment > 0){
         document.getElementById('p'+playerNo).innerText = parseInt(document.getElementById('p'+playerNo).innerText) + increment
         document.getElementById('p'+playerNo).style.backgroundColor = colorOrder[(document.getElementById('p'+playerNo).innerText-1)%colorOrder.length]
         if (document.getElementById('p'+playerNo).style.backgroundColor == 'white'){document.getElementById('p'+playerNo).innerText = document.getElementById('p'+playerNo).innerText + ' ♠'; }
+    }
+    if (currentScore + increment == maxScore){
+        document.getElementById('p'+playerNo).style.backgroundColor = 'black'
+        document.getElementById('p'+playerNo).innerText = `P${playerNo} WINS`
+        document.getElementById('p'+playerNo).style.color = 'white'
     }
 }
 
