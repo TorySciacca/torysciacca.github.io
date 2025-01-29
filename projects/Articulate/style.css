@@ -52,7 +52,7 @@ h1{
 
  .prompt{
     padding: 2vh;
-    width: 45vh;
+    width: 35vh;
  }
 
  .timer,.score{
@@ -73,8 +73,10 @@ h1{
 
  button{
     padding: 0.6em;
-    width: 20vh;
-    margin: 0.8vh;
+    width: 15vh;
+    margin: 0.5vh;
+    margin-right: 1vh;
+    margin-left: 1vh;
     border: 0.2em solid black;
     font-size: 2vh;
     color: black;
