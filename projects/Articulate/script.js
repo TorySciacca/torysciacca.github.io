@@ -3,13 +3,11 @@ const pauseButton = document.getElementById('pause');
 const resetButton = document.getElementById('reset');
 const nextButton = document.getElementById('next');
 const prevButton = document.getElementById('prev');
-//const skipButton = document.getElementById('skip');
 const confirmButton = document.getElementById('confirm');
 
 const totalCategories = 6;
 
-//Prompt objects are stored as follows:
-// {[p:'',o:'',w:'',a:'',n:'',r:'','spade':'a'],..}
+//Prompt objects are stored as follows: {[p:'',o:'',w:'',a:'',n:'',r:'','spade':'a'],..}
 
 let previousPrompts = [];
 let promptNo = 0;
@@ -26,6 +24,8 @@ const p2 = document.getElementById('p2')
 const p3 = document.getElementById('p3')
 const p4 = document.getElementById('p4')
 const p5 = document.getElementById('p5')
+
+document.body.style.overflow = 'hidden'; //disable scroll
 
 newPlayer.addEventListener('click', function() {
     if (noPlayers < 5){
@@ -52,8 +52,7 @@ removePlayer.addEventListener('click', function() {
 
 const maxScore = 49 // according to Articulate board
 
-//const colorOrder = ['deepskyblue','orange','seagreen','red','white','gold','royalblue']
-const colorOrder = ['deepskyblue','orange','white','royalblue','gold','red','seagreen']
+const colorOrder = ['deepskyblue','orange','white','royalblue','gold','red','seagreen'] // according to Articulate board
 
 function updatePlayer(playerNo, increment = 1){
     let currentScore = parseInt(document.getElementById('p'+playerNo).innerText)
