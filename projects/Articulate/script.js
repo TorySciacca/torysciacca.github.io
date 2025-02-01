@@ -321,6 +321,11 @@ window.addEventListener('keydown', function (event) {
 resetPrompts()
 disableButtons(timerRunning)
 
+//Remove any duplicates from the prompt library
+Object.keys(promptLibrary).forEach((key) => {
+    promptLibrary[key] = [...new Set(promptLibrary[key])];
+});
+
 //Main Loop -- runs every second
 setInterval(() => {
     if (timerRunning) {
@@ -999,7 +1004,6 @@ const promptLibrary = {
         "Jellyfish",
         "Starfish",
         "Seahorse",
-        "Turtle",
         "Frog",
         "Toad",
         "Sparrow",
@@ -1216,7 +1220,6 @@ const promptLibrary = {
         "Telescope",
         "Tiger",
         "Train",
-        "Turtle",
         "Umbrella",
         "Vase",
         "Violin",
