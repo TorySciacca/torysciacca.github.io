@@ -171,7 +171,9 @@ function loadPrompts(generateNew){
 
 function loadCategories(){
     for (let i = 0; i < totalCategories; i++) {
-        document.getElementById(prompts[i]).innerText = promptLibrary[prompts[i]][Math.floor(Math.random() * promptLibrary[prompts[i]].length)]
+        let randomIndex = Math.floor(Math.random() * promptLibrary[prompts[i]].length)
+        let selectedPrompt = promptLibrary[prompts[i]].splice(randomIndex, 1)[0];
+        document.getElementById(prompts[i]).innerText = selectedPrompt;
     } 
 
 }
@@ -1179,7 +1181,7 @@ const promptLibrary = {
         "Horse",
         "Icecream",
         "Igloo",
-        "Kangaroo",
+        "Kangaroo", 
         "Kitten",
         "Lion",
         "Microphone",
@@ -1357,7 +1359,6 @@ const promptLibrary = {
         "Vase",
         "Violin",
         "Volcano",
-        "Waterfall",
         "Windmill",
         "Witch",
         "Wizard",
