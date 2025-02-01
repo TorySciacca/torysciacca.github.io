@@ -85,13 +85,11 @@ h1{
  }
 
  button:hover{
-    background-color: black;
-    color: white;
+   transform: scale(1.05);
  }
 
  button:active{
-    background-color: black;
-    color: black;
+    transform: scale(0.95);
  }
 
  button:disabled{
