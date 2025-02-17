@@ -2213,7 +2213,9 @@ const promptLibrary = {
         "Power",
         "Strength",
         "Leach",
-        "Achievement"
+        "Achievement",
+        "Apathetic",
+        "Immunity"
     ]
 }
 
