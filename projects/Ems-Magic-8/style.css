@@ -1,3 +1,27 @@
+ /* --- MOBILE STYLES --- */
+ @media (max-width: 700x) {
+
+   body {
+     font-size: 1em; /* make overall text larger on smaller screens */
+   }
+ 
+   .question-input {
+     font-size: 1em; /* larger text inside input */
+     width: 80vw;    /* use viewport width instead of fixed vh */
+     height: 8vh;    /* a bit taller for touch targets */
+   }
+ 
+   button,
+   input {
+     font-size: 5vh; /* make button/input text larger */
+     padding: 1em;
+   }
+ 
+   .triangle {
+     max-height: 60vh; /* reduce size slightly for better layout */
+   }
+ }
+
 body{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 100;
@@ -64,7 +88,7 @@ body{
    border: 2px solid rgba(255, 255, 255, 0);
    border-radius: 8px;
    color: white;
-   font-size: 1.1rem;
+   font-size: 1em;
    padding: 10px 15px;
    width: 250px;
    text-align: center;
@@ -85,3 +109,6 @@ body{
  .question-input:focus {
    border-color: #00ffff00;
  }
+
+
+ 

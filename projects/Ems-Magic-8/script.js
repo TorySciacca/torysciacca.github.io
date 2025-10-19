@@ -13,24 +13,30 @@ const responses = [
   "Focus and ask again."
 ];
 
-// Track if an answer is currently shown
 let showingAnswer = false;
 
-// Triangle click handler
+// Triangle click / tap handler
 triangle.addEventListener('click', () => {
-  if (!showingAnswer) {
-    // Show answer if input has text
-    if (input.value.trim() !== '') {
-      const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-      input.value = randomResponse;
-      showingAnswer = true;
-      triangle.classList.remove('active');
-    }
-  } else {
-    // Clear input to allow new question
+  // If showing an answer, clear it for a new question
+  if (showingAnswer) {
     input.value = '';
     showingAnswer = false;
+    triangle.classList.remove('active');
+    input.focus(); // focus again after clearing (important for mobile)
+    return;
   }
+
+  // If input is empty, focus it so user can type (mobile-friendly)
+  if (input.value.trim() === '') {
+    input.focus();
+    return;
+  }
+
+  // If there’s text, show an answer
+  const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+  input.value = randomResponse;
+  showingAnswer = true;
+  triangle.classList.remove('active');
 });
 
 // Activate triangle visual state while typing
@@ -38,16 +44,6 @@ input.addEventListener('input', () => {
   if (input.value.trim() !== '' && !showingAnswer) {
     triangle.classList.add('active');
   } else {
-    triangle.classList.remove('active');
-  }
-});
-
-// Trigger answer on Enter key
-input.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' && input.value.trim() !== '' && !showingAnswer) {
-    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-    input.value = randomResponse;
-    showingAnswer = true;
     triangle.classList.remove('active');
   }
 });
