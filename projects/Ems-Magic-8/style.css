@@ -27,7 +27,7 @@ body{
     font-weight: 100;
     font-size: 3vh;
     font-weight: 700;
-    color: rgb(220, 225, 244);
+    color: rgb(255, 255, 255);
     background-color: black; 
 
     /* Centering content in the middle of the viewport */
@@ -88,7 +88,7 @@ body{
    border: 2px solid rgba(255, 255, 255, 0);
    border-radius: 8px;
    color: white;
-   font-size: 1em;
+   font-size: 0.8em;
    padding: 10px 15px;
    width: 250px;
    text-align: center;
@@ -103,7 +103,7 @@ body{
  }
  
  .question-input::placeholder {
-   color: rgba(255, 255, 255, 0.6);
+   color: rgba(255, 255, 255, 0.662);
  }
  
  .question-input:focus {
