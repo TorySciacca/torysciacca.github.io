@@ -1,0 +1,87 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 3vh;
+    font-weight: 700;
+    color: rgb(220, 225, 244);
+    background-color: black; 
+
+    /* Centering content in the middle of the viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* vertical centering */
+    align-items: center;       /* horizontal centering */
+    height: 100vh;             /* make body take full viewport height */
+    margin: 0;                 /* remove default margin */
+    text-align: center;        /* optional, if you want all text centered */
+}
+
+ button,input{
+    padding: 0.6em;
+    width: 15vh;
+    margin: 0.5vh;
+    margin-right: 1vh;
+    margin-left: 1vh;
+    border: 0.2em solid black;
+    font-size: 2.5vh;
+    color: black;
+    background-color: white;
+    color: rgb(7, 22, 48);
+    font-weight: 700;
+ }
+
+ input{
+   width: 85vh;
+   height: 7vh;
+   position: absolute;
+ }
+
+
+ /* Triangle */
+ .triangle{
+   position: absolute;
+   max-height: 80vh;
+   width: auto;
+   transition: transform 0.2s ease, filter 0.2s ease;
+   cursor: pointer;
+   display: block;
+   margin-bottom: 20px;
+ }
+ 
+ /* Only reacts when .active is added by JS */
+ .triangle.active {
+   transform: scale(1.1);
+   filter: brightness(1.2);
+ }
+ 
+ .triangle:active {
+   transform: scale(0.95);
+ }
+ 
+ /* Input styling */
+ .question-input {
+   background: transparent;
+   border: 2px solid rgba(255, 255, 255, 0);
+   border-radius: 8px;
+   color: white;
+   font-size: 1.1rem;
+   padding: 10px 15px;
+   width: 250px;
+   text-align: center;
+   outline: none;
+   transition: border-color 0.3s ease, opacity 0.3s ease;
+   opacity: 0.5;
+ }
+ 
+ .question-input:disabled {
+   opacity: 0.2;
+   cursor: not-allowed;
+ }
+ 
+ .question-input::placeholder {
+   color: rgba(255, 255, 255, 0.6);
+ }
+ 
+ .question-input:focus {
+   border-color: #00ffff00;
+ }
