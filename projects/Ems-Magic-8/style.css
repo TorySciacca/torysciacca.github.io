@@ -82,13 +82,21 @@ body{
    transform: scale(0.95);
  }
  
- /* Input styling */
+ .triangle {
+   pointer-events: auto; /* triangle remains clickable */
+   z-index: 2;           /* keeps it above background but below input */
+ }
+ 
  .question-input {
+   z-index: 3;            /* ensures it's above the triangle */
+   pointer-events: auto;  /* ensures it can be tapped */
+   position: relative;    /* remove absolute to fix layout overlap */
+
    background: transparent;
-   border: 2px solid rgba(255, 255, 255, 0);
+   border: 2px solid rgba(62, 73, 155, 0);
    border-radius: 8px;
    color: white;
-   font-size: 0.8em;
+   font-size: 0.7em;
    padding: 10px 15px;
    width: 250px;
    text-align: center;
@@ -103,7 +111,7 @@ body{
  }
  
  .question-input::placeholder {
-   color: rgba(255, 255, 255, 0.662);
+   color: rgb(255, 255, 255);
  }
  
  .question-input:focus {
