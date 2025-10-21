@@ -104,7 +104,7 @@ body{
    pointer-events: auto;  /* ensures it can be tapped */
    position: relative;    /* remove absolute to fix layout overlap */
 
-   background: #1300b3;
+   background: #1200b300;
    border: 2px solid rgba(62, 73, 155, 0);
    border-radius: 8px;
    color: white;
