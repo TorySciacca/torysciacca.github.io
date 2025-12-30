@@ -1,0 +1,85 @@
+@font-face {
+    font-family: "GallaeciaForte";
+    src: url("GallaeciaForte.ttf") format("truetype");
+}
+
+
+body{
+    background-color: black;
+    user-select: none;
+
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+            display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    width: auto;
+    height: 18em;
+    display: block;
+    margin-top: 8em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p{
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "GallaeciaForte";
+    color: White;
+    margin-top: 1em;
+}
+
+.menu-text{
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "GallaeciaForte";
+    color: grey;
+    margin-top: 1em;
+}
+
+.menu-text:hover{
+    color: white;
+}
+
+.border-text-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "GallaeciaForte";
+    color: white;
+    z-index: 1000;
+}
+
+.border-text-bottom {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "GallaeciaForte";
+    color: white;
+    z-index: 1000;
+}
+
+a{
+    text-decoration: none;
+}
+
+.combat-spell-selection {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.character{
+    line-height: 0.7;
+}
