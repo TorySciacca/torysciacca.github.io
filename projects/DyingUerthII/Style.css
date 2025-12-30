@@ -83,3 +83,7 @@ a{
 .character{
     line-height: 0.7;
 }
+
+.combat-column{
+    padding: 1em;
+}
