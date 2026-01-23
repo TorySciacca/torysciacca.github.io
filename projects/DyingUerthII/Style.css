@@ -1,6 +1,6 @@
 @font-face {
     font-family: "GallaeciaForte";
-    src: url("GallaeciaForte.ttf") format("truetype");
+    src: url("GallaeciaForte3.ttf") format("truetype");
 }
 
 
@@ -29,8 +29,9 @@ p{
     text-align: center;
     font-size: 1.5em;
     font-family: "GallaeciaForte";
-    color: White;
-    margin-top: 1em;
+    color: grey;
+    margin-top: 0.5em;
+    line-height: 2vh;
 }
 
 .menu-text{
@@ -73,7 +74,7 @@ a{
     text-decoration: none;
 }
 
-.combat-spell-selection {
+.player-creature-board, .player-land-board, .enemy-creature-board, .enemy-land-board, .combat-spell-selection,.enemy-mana,.player-mana {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
@@ -87,3 +88,17 @@ a{
 .combat-column{
     padding: 1em;
 }
+
+.player-hand div:hover p{
+    color: red;
+}
+
+.turn-timer {
+    color: white;
+    font-size: 2em;
+}
+
+.player-name,.enemy-name,.player-hp,.enemy-hp{
+    color: white;
+}
+
