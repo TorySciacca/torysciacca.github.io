@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DU2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <pre id="grid"></pre>
+
+  <script>
+    const grid = document.getElementById('grid');
+
+    // ── Grid dimensions ──────────────────────────────────────────────────────
+    const COLS = 80;
+    const ROWS = 35;
+
+    // ── Cell buffer ──────────────────────────────────────────────────────────
+    // Flat 2D array. Plot anything with plot(x, y, string).
+    // Call render() to flush to the screen.
+    let buf = [];
+
+    // ── API ───────────────────────────────────────────────────────────────────
+    // plot(x, y, string)  — write a string into the grid at col x, row y
+    // plot(x, y, '#')     — write a single character
+    // clear()             — wipe the buffer back to spaces
+    // render()            — flush buffer to screen
+    //
+    // x: 0 – 79    y: 0 – 39
+
+    function plot(x, y, str) {
+      str = String(str);
+      for (let i = 0; i < str.length; i++) {
+        if (x + i >= 0 && x + i < COLS && y >= 0 && y < ROWS)
+          buf[y][x + i] = str[i];
+      }
+    }
+
+    function clear() {
+      buf = Array.from({ length: ROWS }, () => Array(COLS).fill(' '));
+    }
+
+    function render() {
+      grid.textContent = buf.map(r => r.join('')).join('\n');
+    }
+
+  
+    // Each plot(x, y, '...') writes a string starting at that cell.
+    // Layer as many calls as you like — later calls overwrite earlier ones.
+
+    clear();
+
+      /*
+    plot( 0,  1,   '┌───────────────────────────────DYING-UERTH-II────────────────────────────────┐');
+    //plot( 0,  1,   '│                                                                             │');
+    plot( 0,  2,   '│                                                                             │');
+    plot( 0,  3,   '│                                                                             │');
+    plot( 0,  4,   '│                                                                             │');
+    plot( 0,  5,   '│                                                                             │');
+    plot( 0,  6,   '│                                                                             │');
+    plot( 0,  7,   '│                                                                             │');
+    plot( 0,  8,   '│                                                                             │');
+    plot( 0,  9,   '│                                                                             │');
+    plot( 0,  10,  '│                                                                             │');
+    plot( 0,  11,  '│                                                                             │');
+    plot( 0,  12,  '│                                                                             │');
+    plot( 0,  13,  '│                                                                             │');
+    plot( 0,  14,  '│                                                                             │');
+    plot( 0,  15,  '│                                                                             │');
+    plot( 0,  16,  '│                                                                             │');
+    plot( 0,  17,  '│                                                                             │');
+    plot( 0,  18,  '│                                                                             │');
+    plot( 0,  19,  '│                                                                             │');
+    plot( 0,  20,  '│                                                                             │');
+    plot( 0,  21,  '│                                                                             │');
+    plot( 0,  22,  '│                                                                             │');
+    plot( 0,  23,  '│                                                                             │');
+    plot( 0,  24,  '└─────────────────────────────────────────────────────────────────────────────┘');
+
+    */
+
+    plot( 1,  26,  'Player A has cast XYZ');
+    plot( 1,  27,  'Player B has cast XYZ');
+    plot( 1,  28,  'Player B has cast XYZ');
+    plot( 1,  29,  'Player B has cast XYZ');
+    plot( 1,  30,  'Player B has cast XYZ');
+    plot( 1,  31,  'Player B has cast XYZ');
+    plot( 1,  32,  'Player B has cast XYZ');
+
+
+
+    //Info
+
+    plot( 1,  5,  '┌────────────────────┐');
+    plot( 1,  6,  '│                   2│');
+    plot( 1,  7,  '│                    │');
+    plot( 1,  8,  '│                    │');
+    plot( 1,  9,  '│                    │');
+    plot( 1,  10, '│                    │');
+    plot( 1,  11, '│                    │');
+    plot( 1,  12, '│                    │');
+    plot( 1,  13, '│                    │');
+    plot( 1,  14, '│                    │');
+    plot( 1,  15, '│                    │');
+    plot( 1,  16, '│                    │');
+    plot( 1,  17, '│                    │');
+    plot( 1,  18, '│                    │');
+    plot( 1,  19, '│                    │');
+    plot( 1,  20, '│                    │');
+    plot( 1,  21, '│                    │');
+    plot( 1,  22, '│                 4/4│');
+    plot( 1,  23, '└────────────────────┘');
+
+    //Opponant Land Info
+
+    plot( 32,   2, '┌──────┐');
+    plot( 32,   3, '│      │');
+    plot( 32,   4, '│      │');
+    plot( 32,   5, '│      │');
+    plot( 32,   6, '│      │');
+    plot( 32,   7, '└──────┘');
+
+    plot( 40,   2, '┌──────┐');
+    plot( 40,   3, '│      │');
+    plot( 40,   4, '│      │');
+    plot( 40,   5, '│      │');
+    plot( 40,   6, '│      │');
+    plot( 40,   7, '└──────┘');
+
+    plot( 48,   2, '┌──────┐');
+    plot( 48,   3, '│      │');
+    plot( 48,   4, '│      │');
+    plot( 48,   5, '│      │');
+    plot( 48,   6, '│      │');
+    plot( 48,   7, '└──────┘');
+
+
+    plot( 24,   8, '┌──────┐');
+    plot( 24,   9, '│      │');
+    plot( 24,  10, '│      │');
+    plot( 24,  11, '│      │');
+    plot( 24,  12, '│      │');
+    plot( 24,  13, '└──────┘');
+
+    plot( 32,   8, '┌──────┐');
+    plot( 32,   9, '│      │');
+    plot( 32,  10, '│      │');
+    plot( 32,  11, '│      │');
+    plot( 32,  12, '│      │');
+    plot( 32,  13, '└──────┘');
+
+    plot( 40,   8, '┌──────┐');
+    plot( 40,   9, '│      │');
+    plot( 40,  10, '│      │');
+    plot( 40,  11, '│      │');
+    plot( 40,  12, '│      │');
+    plot( 40,  13, '└──────┘');
+
+    plot( 48,   8, '┌──────┐');
+    plot( 48,   9, '│      │');
+    plot( 48,  10, '│      │');
+    plot( 48,  11, '│      │');
+    plot( 48,  12, '│      │');
+    plot( 48,  13, '└──────┘');
+
+
+    plot( 56,    8, '┌──────┐');
+    plot( 56,    9, '│      │');
+    plot( 56,   10, '│      │');
+    plot( 56,   11, '│      │');
+    plot( 56,   12, '│      │');
+    plot( 56,   13, '└──────┘');
+
+    //Opponent Info
+
+    plot( 66,   8, '┌──────────┐');
+    plot( 66,   9, '│          │');
+    plot( 66,  10, '│          │');
+    plot( 66,  11, '└──────────┘');
+
+    //plot( 69,  12, ' 02  ');
+
+    plot( 66,  17, '┌──────────┐');
+    plot( 66,  18, '│          │');
+    plot( 66,  19, '│          │');
+    plot( 66,  20, '└──────────┘');
+
+    plot( 71,  14, '23');
+
+    //Player Land Info
+
+    plot( 24,  15, '┌──────┐');
+    plot( 24,  16, '│      │');
+    plot( 24,  17, '│      │');
+    plot( 24,  18, '│      │');
+    plot( 24,  19, '│      │');
+    plot( 24,  20, '└──────┘');
+
+    plot( 32,  15, '┌──────┐');
+    plot( 32,  16, '│      │');
+    plot( 32,  17, '│      │');
+    plot( 32,  18, '│      │');
+    plot( 32,  19, '│      │');
+    plot( 32,  20, '└──────┘');
+
+    plot( 40,  15, '┌──────┐');
+    plot( 40,  16, '│      │');
+    plot( 40,  17, '│      │');
+    plot( 40,  18, '│      │');
+    plot( 40,  19, '│      │');
+    plot( 40,  20, '└──────┘')
+
+    plot( 48,  15, '┌──────┐');
+    plot( 48,  16, '│      │');
+    plot( 48,  17, '│      │');
+    plot( 48,  18, '│      │');
+    plot( 48,  19, '│      │');
+    plot( 48,  20, '└──────┘')
+
+    plot( 56,  15, '┌──────┐');
+    plot( 56,  16, '│      │');
+    plot( 56,  17, '│      │');
+    plot( 56,  18, '│      │');
+    plot( 56,  19, '│      │');
+    plot( 56,  20, '└──────┘');
+
+
+
+    plot( 32,  21, '┌──────┐');
+    plot( 32,  22, '│      │');
+    plot( 32,  23, '│      │');
+    plot( 32,  24, '│      │');
+    plot( 32,  25, '│      │');
+    plot( 32,  26, '└──────┘');
+
+    plot( 40,  21, '┌──────┐');
+    plot( 40,  22, '│      │');
+    plot( 40,  23, '│      │');
+    plot( 40,  24, '│      │');
+    plot( 40,  25, '│      │');
+    plot( 40,  26, '└──────┘');
+
+    plot( 48,  21, '┌──────┐');
+    plot( 48,  22, '│      │');
+    plot( 48,  23, '│      │');
+    plot( 48,  24, '│      │');
+    plot( 48,  25, '│      │');
+    plot( 48,  26, '└──────┘');
+
+
+    //Player Info
+
+    //Player Hand Info
+
+    plot( 35,  28, '┌──────┐');
+    plot( 35,  29, '│      │');
+    plot( 35,  30, '│      │');
+    plot( 35,  31, '│      │');
+    plot( 35,  32, '│      │');
+    plot( 35,  33, '└──────┘');
+
+    plot( 43,  28, '┌──────┐');
+    plot( 43,  29, '│      │');
+    plot( 43,  30, '│      │');
+    plot( 43,  31, '│      │');
+    plot( 43,  32, '│      │');
+    plot( 43,  33, '└──────┘');
+
+    plot( 51,  28, '┌──────┐');
+    plot( 51,  29, '│      │');
+    plot( 51,  30, '│      │');
+    plot( 51,  31, '│      │');
+    plot( 51,  32, '│      │');
+    plot( 51,  33, '└──────┘');
+
+    plot( 59,  28, '┌──────┐');
+    plot( 59,  29, '│      │');
+    plot( 59,  30, '│      │');
+    plot( 59,  31, '│      │');
+    plot( 59,  32, '│      │');
+    plot( 59,  33, '└──────┘');
+
+    plot( 68,  28, '┌───┐');
+    plot( 68,  29, '│00 │');
+    plot( 68,  30, '└───┘');
+
+    plot( 74,  28, '┌───┐');
+    plot( 74,  29, '│00 │');
+    plot( 74,  30, '└───┘');
+
+    plot( 68,  31, '┌───┐');
+    plot( 68,  32, '│00 │');
+    plot( 68,  33, '└───┘');
+
+
+    plot( 66,  2, '┌──┐');
+    plot( 66,  3, '│59│');
+    plot( 66,  4, '└──┘');
+
+    plot( 70,  2, '┌──┐');
+    plot( 70,  3, '│00│');
+    plot( 70,  4, '└──┘');
+
+    plot( 74,  2, '┌──┐');
+    plot( 74,  3, '│00│');
+    plot( 74,  4, '└──┘');
+
+
+    render();
+
+    // ── Scaling / letterbox ──────────────────────────────────────────────────
+    function measureCell(fontSize) {
+      const probe = document.createElement('span');
+      probe.style.cssText = `
+        position:absolute; visibility:hidden; white-space:pre;
+        font-family:'Courier New',Courier,monospace;
+        font-size:${fontSize}px; line-height:1; letter-spacing:0.15em;
+      `;
+      probe.textContent = '─';
+      document.body.appendChild(probe);
+      const r = probe.getBoundingClientRect();
+      document.body.removeChild(probe);
+      return { w: r.width, h: r.height };
+    }
+
+    function resize() {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      let bestFs = 6;
+      for (let fs = 6; fs <= 200; fs++) {
+        const cell = measureCell(fs);
+        if (cell.w * COLS <= vw && cell.h * ROWS <= vh) bestFs = fs;
+        else break;
+      }
+      const cell = measureCell(bestFs);
+      grid.style.fontSize = bestFs + 'px';
+      grid.style.left     = Math.floor((vw - cell.w * COLS) / 2) + 'px';
+      grid.style.top      = Math.floor((vh - cell.h * ROWS) / 2) + 'px';
+    }
+
+    resize();
+    let rafId;
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(resize);
+    });
+  </script>
+</body>
+</html>

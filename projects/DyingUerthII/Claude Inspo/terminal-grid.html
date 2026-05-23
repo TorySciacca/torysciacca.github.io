@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>terminal grid</title>
+  <style>
+    :root {
+      --bg:   #0d0d0d;
+      --fg:   #c8ff00;
+      --dim:  #2a3300;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    #grid {
+      display: block;
+      position: fixed;
+      inset: 0;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+      line-height: 1;        /* tight — cell height = font-size */
+      color: var(--fg);
+      /* letter-spacing tuned so char-cell is ~4:3 wide:tall */
+      letter-spacing: 0.15em;
+      user-select: none;
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+  <pre id="grid"></pre>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const CHAR = '-';
+
+    // Fixed grid dimensions — always exactly this many characters
+    const COLS = 80;
+    const ROWS = 30;
+
+    // Build the static text content once
+    const row = CHAR.repeat(COLS);
+    grid.textContent = Array(ROWS).fill(row).join('\n');
+
+    // Measure a single character cell at a given font-size
+    function measureCell(fontSize) {
+      const probe = document.createElement('span');
+      probe.style.cssText = `
+        position:absolute; visibility:hidden; white-space:pre;
+        font-family:'Courier New',Courier,monospace;
+        font-size:${fontSize}px; line-height:1; letter-spacing:0.15em;
+      `;
+      probe.textContent = CHAR;
+      document.body.appendChild(probe);
+      const r = probe.getBoundingClientRect();
+      document.body.removeChild(probe);
+      return { w: r.width, h: r.height };
+    }
+
+    function build() {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      // Find the largest font-size where the full COLS×ROWS grid fits inside the viewport.
+      // Scale is limited by whichever axis runs out first — the other axis gets black bars.
+      let bestFs = 6;
+      for (let fs = 6; fs <= 200; fs++) {
+        const cell = measureCell(fs);
+        if (cell.w * COLS <= vw && cell.h * ROWS <= vh) {
+          bestFs = fs;
+        } else {
+          break;
+        }
+      }
+
+      const cell = measureCell(bestFs);
+      const usedW = cell.w * COLS;
+      const usedH = cell.h * ROWS;
+
+      grid.style.fontSize  = bestFs + 'px';
+      // Centre the grid — leftover space becomes black bars (body is #0d0d0d)
+      grid.style.position  = 'fixed';
+      grid.style.left      = Math.floor((vw - usedW) / 2) + 'px';
+      grid.style.top       = Math.floor((vh - usedH) / 2) + 'px';
+      grid.style.width     = usedW + 'px';
+      grid.style.height    = usedH + 'px';
+    }
+
+    build();
+
+    let rafId;
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(build);
+    });
+  </script>
+</body>
+</html>

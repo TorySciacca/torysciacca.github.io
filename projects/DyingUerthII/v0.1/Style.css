@@ -1,0 +1,104 @@
+@font-face {
+    font-family: "GallaeciaForte" monospace;
+    src: url("GallaeciaForte4.ttf") format("truetype");
+}
+
+
+body{
+    background-color: black;
+    user-select: none;
+
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+            display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    width: auto;
+    height: 18em;
+    display: block;
+    margin-top: 8em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p{
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "GallaeciaForte";
+    color: grey;
+    margin-top: 0.5em;
+    line-height: 2vh;
+}
+
+.menu-text{
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "GallaeciaForte";
+    color: grey;
+    margin-top: 1em;
+}
+
+.menu-text:hover{
+    color: white;
+}
+
+.border-text-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "GallaeciaForte";
+    color: white;
+    z-index: 1000;
+}
+
+.border-text-bottom {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "GallaeciaForte";
+    color: white;
+    z-index: 1000;
+}
+
+a{
+    text-decoration: none;
+}
+
+.player-creature-board, .player-land-board, .enemy-creature-board, .enemy-land-board, .combat-spell-selection,.enemy-mana,.player-mana {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.character{
+    line-height: 0.7;
+}
+
+.combat-column{
+    padding: 1em;
+}
+
+.player-hand div:hover p{
+    color: red;
+}
+
+.turn-timer {
+    color: white;
+    font-size: 2em;
+}
+
+.player-name,.enemy-name,.player-hp,.enemy-hp{
+    color: white;
+}
+

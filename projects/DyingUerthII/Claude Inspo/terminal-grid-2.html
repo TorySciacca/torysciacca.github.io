@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>terminal grid</title>
+  <style>
+    :root {
+      --bg:   #0d0d0d;
+      --fg:   #c8ff00;
+      --dim:  #2a3300;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    #grid {
+      display: block;
+      position: fixed;
+      inset: 0;
+      font-family: 'Courier New', Courier, monospace;
+      white-space: pre;
+      line-height: 1;        /* tight — cell height = font-size */
+      color: var(--fg);
+      /* letter-spacing tuned so char-cell is ~4:3 wide:tall */
+      letter-spacing: 0.15em;
+      user-select: none;
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+  <pre id="grid"></pre>
+
+  <script>
+    const grid = document.getElementById('grid');
+
+    // ── Grid dimensions ──────────────────────────────────────────────────────
+    const COLS = 80;
+    const ROWS = 40;
+
+    // ── Cell buffer ──────────────────────────────────────────────────────────
+    // Flat 2D array. Plot anything with plot(x, y, string).
+    // Call render() to flush to the screen.
+    let buf = [];
+
+    // ── API ───────────────────────────────────────────────────────────────────
+    // plot(x, y, string)  — write a string into the grid at col x, row y
+    // plot(x, y, '#')     — write a single character
+    // clear()             — wipe the buffer back to spaces
+    // render()            — flush buffer to screen
+    //
+    // x: 0 – 79    y: 0 – 39
+
+    function plot(x, y, str) {
+      str = String(str);
+      for (let i = 0; i < str.length; i++) {
+        if (x + i >= 0 && x + i < COLS && y >= 0 && y < ROWS)
+          buf[y][x + i] = str[i];
+      }
+    }
+
+    function clear() {
+      buf = Array.from({ length: ROWS }, () => Array(COLS).fill(' '));
+    }
+
+    function render() {
+      grid.textContent = buf.map(r => r.join('')).join('\n');
+    }
+
+    
+    // Each plot(x, y, '...') writes a string starting at that cell.
+    // Layer as many calls as you like — later calls overwrite earlier ones.
+
+    clear();
+
+    plot( 0,  0,   '┌───────────────────────────────DYING-UERTH-II────────────────────────────────┐');
+    plot( 0,  1,   '│                                                                             │');
+    plot( 0,  2,   '│                                                                             │');
+    plot( 0,  3,   '│                                                                             │');
+    plot( 0,  4,   '│                                                                             │');
+    plot( 0,  5,   '│                                                                             │');
+    plot( 0,  6,   '│                                                                             │');
+    plot( 0,  7,   '│                                                                             │');
+    plot( 0,  8,   '│                                                                             │');
+    plot( 0,  9,   '│                                                                             │');
+    plot( 0,  10,  '│                                                                             │');
+    plot( 0,  11,  '│                                                                             │');
+    plot( 0,  12,  '│                                                                             │');
+    plot( 0,  13,  '│                                                                             │');
+    plot( 0,  14,  '│                                                                             │');
+    plot( 0,  15,  '│                                                                             │');
+    plot( 0,  16,  '│                                                                             │');
+    plot( 0,  17,  '│                                                                             │');
+    plot( 0,  18,  '│                                                                             │');
+    plot( 0,  19,  '│                                                                             │');
+    plot( 0,  20,  '│                                                                             │');
+    plot( 0,  21,  '│                                                                             │');
+    plot( 0,  22,  '│                                                                             │');
+    plot( 0,  23,  '│                                                                             │');
+    plot( 0,  24,  '│                                                                             │');
+    plot( 0,  25,  '│                                                                             │');
+    plot( 0,  26,  '│                                                                             │');
+    plot( 0,  27,  '│                                                                             │');
+    plot( 0,  28,  '│                                                                             │');
+    plot( 0,  29,  '│                                                                             │');
+    plot( 0,  30,  '│                                                                             │');
+    plot( 0,  31,  '│                                                                             │');
+    plot( 0,  32,  '│                                                                             │');
+    plot( 0,  33,  '│                                                                             │');
+    plot( 0,  34,  '│                                                                             │');
+    plot( 0,  35,  '│                                                                             │');
+    plot( 0,  36,  '│                                                                             │');
+    plot( 0,  37,  '│                                                                             │');
+    plot( 0,  38,  '│                                                                             │');
+    plot( 0,  39,  '└─────────────────────────────────────────────────────────────────────────────┘');
+
+
+
+    plot( 2,  3, '┌───────────────────────────────────────────────────┐');
+    plot( 2,  4, '│                                                   │');
+    plot( 2,  5, '│                                                   │');
+    plot( 2,  6, '│                                                   │');
+    plot( 2,  7, '│                                                   │');
+    plot( 2,  8, '└───────────────────────────────────────────────────┘');
+
+    plot( 57,  3, '┌───────────────┐');
+    plot( 57,  4, '│               │');
+    plot( 57,  5, '│               │');
+    plot( 57,  6, '│               │');
+    plot( 57,  7, '│               │');
+    plot( 57,  8, '└───────────────┘');
+
+    plot( 2,  10, '┌──────────────────────────────────────────────────────────────────────────┐');
+    plot( 2,  11, '│                                                                          │');
+    plot( 2,  12, '│                                                                          │');
+    plot( 2,  13, '│                                                                          │');
+    plot( 2,  14, '│                                                                          │');
+    plot( 2,  15, '└──────────────────────────────────────────────────────────────────────────┘');
+
+    render();
+
+    // ── Scaling / letterbox ──────────────────────────────────────────────────
+    function measureCell(fontSize) {
+      const probe = document.createElement('span');
+      probe.style.cssText = `
+        position:absolute; visibility:hidden; white-space:pre;
+        font-family:'Courier New',Courier,monospace;
+        font-size:${fontSize}px; line-height:1; letter-spacing:0.15em;
+      `;
+      probe.textContent = '─';
+      document.body.appendChild(probe);
+      const r = probe.getBoundingClientRect();
+      document.body.removeChild(probe);
+      return { w: r.width, h: r.height };
+    }
+
+    function resize() {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      let bestFs = 6;
+      for (let fs = 6; fs <= 200; fs++) {
+        const cell = measureCell(fs);
+        if (cell.w * COLS <= vw && cell.h * ROWS <= vh) bestFs = fs;
+        else break;
+      }
+      const cell = measureCell(bestFs);
+      grid.style.fontSize = bestFs + 'px';
+      grid.style.left     = Math.floor((vw - cell.w * COLS) / 2) + 'px';
+      grid.style.top      = Math.floor((vh - cell.h * ROWS) / 2) + 'px';
+    }
+
+    resize();
+    let rafId;
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(resize);
+    });
+  </script>
+</body>
+</html>
